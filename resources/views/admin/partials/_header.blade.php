@@ -38,7 +38,7 @@
                     <li class="profile-nav onhover-dropdown pe-0 me-0">
                         <div class="media profile-media">
                             <img class="user-profile rounded-circle" src="/images/icon-logo.png" alt="profile-picture">
-                            <div class="user-name-hide media-body"><span>Admin User</span>
+                            <div class="user-name-hide media-body"><span>Super Admin</span>
                                 <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
                             </div>
                         </div>
@@ -85,19 +85,27 @@
                         <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="home">
                                 </i><span>Dashboard</span></a></li>
 
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="map"></i><span>Trip Categories</span></a>
+                        <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="map"></i><span>Employer Details</span></a>
                             <ul class="sidebar-submenu">
-                                <li><a href="#">Add New Category</a></li>
-                                <li><a href="#">All Category</a></li>
+                                <li><a href="#">View Employer</a></li>
+                                <li><a href="#">Edit Employer</a></li>
                             </ul>
                         </li>
 
                         <li class="sidebar-list">
-                            <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="briefcase"></i><span>Trips Package
+                            <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="briefcase"></i><span>Employee Details
                                 </span></a>
                             <ul class="sidebar-submenu">
-                                <li><a href="#">Add New Trips</a></li>
-                                <li><a href="#">All Trips</a></li>
+                                <li><a href="#">View Employee</a></li>
+                                <li><a href="#">Edit Employee</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="sidebar-list">
+                            <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="bookmark"></i><span>Job Postings</span></a>
+                            <ul class="sidebar-submenu">
+                                <li><a href="">View Jobs</a></li>
+                                <!-- <li><a href="">All Blog Post</a></li> -->
 
                             </ul>
                         </li>
@@ -113,14 +121,7 @@
 
                             </ul>
                         </li>
-                        <li class="sidebar-list">
-                            <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="bookmark"></i><span>Blog Post</span></a>
-                            <ul class="sidebar-submenu">
-                                <li><a href="">Add New Blog Post</a></li>
-                                <li><a href="">All Blog Post</a></li>
 
-                            </ul>
-                        </li>
                         <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="message-square">
                                 </i><span>Home Reviews</span></a></li>
 

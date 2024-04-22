@@ -9,14 +9,11 @@
     <meta name="keywords" content="rica">
     <meta name="author" content="rica">
     <link rel="icon" href="{{ URL::asset('images/favicon.png') }}" type="image/x-icon" />
-    <title>Step By Step Treks</title>
+    <title>Job Nexus</title>
 
     <!--Google font-->
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Vampiro+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700&display=swap" rel="stylesheet">
 
@@ -45,8 +42,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('backdoordashpanel/css/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('backdoordashpanel/css/slick-theme.css') }}">
     <!-- Bootstrap-tag input css-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ URL::asset('backdoordashpanel/css/vendors/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('backdoordashpanel/css/vendors/bootstrap-tagsinput.css') }}">
     <!--Dropzon start-->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('backdoordashpanel/css/vendors/dropzone.css') }}">
     <!--Dropzon end-->
