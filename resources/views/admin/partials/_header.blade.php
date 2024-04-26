@@ -1,217 +1,100 @@
-<!-- tap on top starts-->
-<div class="tap-top"><i data-feather="chevrons-up"></i></div>
-<!-- tap on tap ends-->
-<!-- page-wrapper Start-->
-<div class="page-wrapper compact-wrapper modern-type" id="pageWrapper">
-    <!-- Page Header Start-->
-    <div class="page-header">
-        <div class="header-wrapper row m-0">
-
-            <div class="header-logo-wrapper col-auto p-0">
-                <div class="logo-wrapper"><a href="/dashboard"><img class="img-fluid main-logo" style="height: 79px !important;" src="/images/logo/logo-no-background.png" alt="logo">
-                        <img class="img-fluid white-logo" src="/images/logo/logo-color.png" alt="logo"></a>
-                </div>
-                <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
-                </div>
-            </div>
-
-            <form class="form-inline search-full col " action="#" method="get">
-                <div class="form-group w-100">
-                    <div class="Typeahead Typeahead--twitterUsers">
-                        <div class="u-posRelative">
-                            <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Search. . . ." name="q" title="" autofocus>
-                            <i class="close-search" data-feather="x"></i>
-                            <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span>
-                            </div>
-                        </div>
-                        <div class="Typeahead-menu"></div>
-                    </div>
-                </div>
-            </form>
-            <div class="nav-right col-4 pull-right right-header p-0">
-                <ul class="nav-menus">
-                    <li>
-                        <div class="mode"><i class="fa fa-moon-o" aria-hidden="true"></i>
-                        </div>
-                    </li>
-                    <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
-                    <li class="profile-nav onhover-dropdown pe-0 me-0">
-                        <div class="media profile-media">
-                            <img class="user-profile rounded-circle" src="/images/icon-logo.png" alt="profile-picture">
-                            <div class="user-name-hide media-body"><span>Super Admin</span>
-                                <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
-                            </div>
-                        </div>
-                        <ul class="profile-dropdown onhover-show-div">
-                            <li><a href="/logout"><i data-feather="log-out"> </i><span>Log
-                                        out</span></a></li>
-
-                        </ul>
-                    </li>
-                </ul>
+<div class="app-header header-shadow">
+    <div class="app-header__logo">
+        <div class="logo-src"></div>
+        <div class="header__pane ml-auto">
+            <div>
+                <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
             </div>
         </div>
     </div>
-
-
-    {{-- code for trip added alert message --}}
-    {{-- <div class="container"> --}}
-    {{-- <div class="alert alert-success" id="alert-time">{{ $message }}
-</div> --}}
-{{-- </div> --}}
-
-
-<!-- Page Header Ends -->
-<!-- Page Body Start-->
-<div class="page-body-wrapper">
-    <!-- Page Sidebar Start-->
-    <div class="sidebar-wrapper">
+    <div class="app-header__mobile-menu">
         <div>
-            <div class="logo-wrapper">
-                <span class="back">Back</span>
-                <div class="back-btn"><i class="fa fa-angle-left"></i></div>
-                <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid">
-                    </i></div>
-            </div>
-            <div class="logo-icon-wrapper"><a href="/dashboard"><img class="img-fluid" src="#" alt=""></a></div>
-            <nav class="sidebar-main">
-                <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
-                <div id="sidebar-menu">
-                    <ul class="sidebar-links" id="simple-bar">
-                        <li class="back-btn"><a href="/dashboard"><img class="img-fluid" src="#" alt=""></a>
-                            <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
-                        </li>
-
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="home">
-                                </i><span>Dashboard</span></a></li>
-
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="map"></i><span>Employer Details</span></a>
-                            <ul class="sidebar-submenu">
-                                <li><a href="#">View Employer</a></li>
-                                <li><a href="#">Edit Employer</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-list">
-                            <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="briefcase"></i><span>Employee Details
-                                </span></a>
-                            <ul class="sidebar-submenu">
-                                <li><a href="#">View Employee</a></li>
-                                <li><a href="#">Edit Employee</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="sidebar-list">
-                            <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="bookmark"></i><span>Job Postings</span></a>
-                            <ul class="sidebar-submenu">
-                                <li><a href="">View Jobs</a></li>
-                                <!-- <li><a href="">All Blog Post</a></li> -->
-
-                            </ul>
-                        </li>
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="sliders">
-                                </i><span>Slider</span></a>
-                        </li>
-
-                        <li class="sidebar-list">
-                            <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="users"></i><span>Teams</span></a>
-                            <ul class="sidebar-submenu">
-                                <li><a href="#">Add New Team Member</a></li>
-                                <li><a href="#">All Team Members</a></li>
-
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="message-square">
-                                </i><span>Home Reviews</span></a></li>
-
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#"><i data-feather="message-circle"></i><span>Contact Us</span></a></li>
-
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="award">
-                                </i><span>Review Approval</span></a>
-                        </li>
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="dollar-sign">
-                                </i><span>Booking</span></a>
-                        </li>
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="book-open">
-                                </i><span>Quick Inquiry</span></a>
-                        </li>
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="package">
-                                </i><span>General Data</span></a>
-                        </li>
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="settings">
-                                </i><span>Custom Trips</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="logo-icon-wrapper"><a href="/dashboard"><img class="img-fluid" src="#" alt=""></a></div>
-                <nav class="sidebar-main">
-                    <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
-                    <div id="sidebar-menu">
-                        <ul class="sidebar-links" id="simple-bar">
-                            <li class="back-btn"><a href="/dashboard"><img class="img-fluid" src="#" alt=""></a>
-                                <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
-                            </li>
-
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="/dashboard"><i data-feather="home">
-                                    </i><span>Dashboard</span></a></li>
-
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="map"></i><span>Trip Categories</span></a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="#">Add New Category</a></li>
-                                    <li><a href="#">All Category</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-list">
-                                <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="briefcase"></i><span>Trips Package
-                                    </span></a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="">Add New Trips</a></li>
-                                    <li><a href="">All Trips</a></li>
-
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-list">
-                                <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="users"></i><span>Teams</span></a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="">Add New Team Member</a></li>
-                                    <li><a href="">All Team Members</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="sidebar-list">
-                                <a class="linear-icon-link sidebar-link sidebar-title" href="#"><i data-feather="bookmark"></i><span>Blog Post</span></a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="">Add New Blog Post</a></li>
-                                    <li><a href="">All Blog Post</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="message-square">
-                                    </i><span>Home Reviews</span></a></li>
-
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#"><i data-feather="message-circle"></i><span>Contact Us</span></a></li>
-
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="award">
-                                    </i><span>Review Approval</span></a>
-                            </li>
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="dollar-sign">
-                                    </i><span>Booking</span></a>
-                            </li>
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="book-open">
-                                    </i><span>Quick Inquiry</span></a>
-                            </li>
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="package">
-                                    </i><span>General Data</span></a>
-                            </li>
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="settings">
-                                    </i><span>Custom Trips</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
-                </nav>
+            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
         </div>
     </div>
+    <div class="app-header__menu">
+        <span>
+            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                <span class="btn-icon-wrapper">
+                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                </span>
+            </button>
+        </span>
+    </div>
+    <div class="app-header__content">
+        <div class="app-header-left">
+            <div class="search-wrapper">
+                <div class="input-holder">
+                    <input type="text" class="search-input" placeholder="Type to search">
+                    <button class="search-icon"><span></span></button>
+                </div>
+                <button class="close"></button>
+            </div>
+            <ul class="header-menu nav">
+                <li class="nav-item">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="nav-link-icon fa fa-database"> </i>
+                        Statistics
+                    </a>
+                </li>
+                <li class="btn-group nav-item">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="nav-link-icon fa fa-edit"></i>
+                        Projects
+                    </a>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="nav-link-icon fa fa-cog"></i>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="app-header-right">
+            <div class="header-btn-lg pr-0">
+                <div class="widget-content p-0">
+                    <div class="widget-content-wrapper">
+                        <div class="widget-content-left">
+                            <div class="btn-group">
+                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                    <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+                                    <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                </a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                    <button type="button" tabindex="0" class="dropdown-item">User Account</button>
+                                    <button type="button" tabindex="0" class="dropdown-item">Settings</button>
+                                    <h6 tabindex="-1" class="dropdown-header">Header</h6>
+                                    <button type="button" tabindex="0" class="dropdown-item">Actions</button>
+                                    <div tabindex="-1" class="dropdown-divider"></div>
+                                    <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content-left  ml-3 header-user-info">
+                            <div class="widget-heading">
+                                Alina Mclourd
+                            </div>
+                            <div class="widget-subheading">
+                                VP People Manager
+                            </div>
+                        </div>
+                        <div class="widget-content-right header-user-info ml-3">
+                            <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+                                <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
