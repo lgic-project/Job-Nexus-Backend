@@ -12,6 +12,6 @@ class EmployerController extends Controller
     public function index()
     {
         $employerData = Employer::all();
-        return response()->json($employerData);
+        return view('admin.modules.employee.editemployee');
     }
 }
