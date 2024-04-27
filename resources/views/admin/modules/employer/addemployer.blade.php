@@ -93,7 +93,7 @@
 
     <div class="mb-3">
         <label class="form-label-title">Employer/ Description</label>
-        <input id="editor" class="form-control" type="text" placeholder="Catgory Name" name="category_subheading">
+        <input type="textarea" id="form6Example4" class="form-control" name="employer_description" />
     </div>
 
     <!-- Submit button -->

@@ -14,7 +14,9 @@ class EmployerController extends Controller
     {
         $employerData = new Employer();
         $employerData->fill($req->all());
-        dd($employerData);
+        // $ck = $req->input('employer_description');
+
+        // dd($req->employer_description);
 
         //profile picture
         $newThumbnailImageName = time() . '.' . $req->file('employer_image')->getClientOriginalName();
@@ -25,10 +27,10 @@ class EmployerController extends Controller
         $newThumbnailImageName2 = time() . '.' . $req->file('employer_certificate')->getClientOriginalName();
         $req->employer_certificate->move(public_path('images/employer/certificate'), $newThumbnailImageName2);
         $employerData->employer_certificate = $newThumbnailImageName2;
-        $employerData->employer_slug = $employerData->employee_first_name;
+        $employerData->employer_slug = $employerData->employer_first_name;
         $employerData->employer_status = "Inactive";
-
-        dd($employerData);
+        $employerData->save();
+        return redirect('{{route(employer-save}}');
     }
     public function index()
     {
