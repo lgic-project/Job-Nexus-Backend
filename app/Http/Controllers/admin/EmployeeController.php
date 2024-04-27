@@ -13,6 +13,11 @@ class EmployeeController extends Controller
     public function index()
     {
         $employeeData = Employee::all();
-        return response()->json($employeeData);
+        return view('admin.modules.employee.listemployee', compact('employeeData'));
+    }
+
+    public function edit()
+    {
+        return view('admin.modules.employee.editemployee');
     }
 }

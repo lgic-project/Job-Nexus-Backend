@@ -1,0 +1,105 @@
+@extends('admin.master')
+
+@section('content')
+<h3>Register Employer</h3>
+<form method="POST" action="{{route('employer-save')}}" enctype="multipart/form-data>
+    @csrf
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <div class=" row mb-4">
+    <div class="col">
+        <div data-mdb-input-init class="form-outline">
+            <input type="text" id="form6Example1" class="form-control" name="employer_first_name" />
+            <label class="form-label" for="form6Example1">First name</label>
+        </div>
+    </div>
+
+    <div class="col">
+        <div data-mdb-input-init class="form-outline">
+            <input type="text" id="form6Example2" class="form-control" name="employer_middle_name" />
+            <label class="form-label" for="form6Example2">Middle Name</label>
+        </div>
+    </div>
+
+    <div class="col">
+        <div data-mdb-input-init class="form-outline">
+            <input type="text" id="form6Example2" class="form-control" name="employer_last_name" />
+            <label class="form-label" for="form6Example2">Last name</label>
+        </div>
+    </div>
+    </div>
+
+    <!-- Text input -->
+    <div class="row mb-4">
+        <div class="col">
+            <div data-mdb-input-init class="form-outline ">
+                <input type="text" id="form6Example3" class="form-control" name="employer_company_name" />
+                <label class="form-label" for="form6Example3">Company name</label>
+            </div>
+
+        </div>
+
+
+        <div class="col">
+            <div data-mdb-input-init class="form-outline ">
+                <input type="text" id="form6Example4" class="form-control" name="employer_address" />
+                <label class="form-label" for="form6Example4">Address</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <div data-mdb-input-init class="form-outline ">
+                <input type="email" id="form6Example3" class="form-control" name="employer_email" />
+                <label class="form-label" for="form6Example3">Email</label>
+            </div>
+
+        </div>
+
+
+        <div class="col">
+            <div data-mdb-input-init class="form-outline ">
+                <input type="password" id="form6Example4" class="form-control" name="employer_password" />
+                <label class="form-label" for="form6Example4">Password</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div data-mdb-input-init class="form-outline ">
+                <input type="file" id="form6Example3" class="form-control" name="employer_image" />
+                <label class="form-label" for="form6Example3">Profile Picture</label>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+            <div data-mdb-input-init class="form-outline ">
+                <input type="file" id="form6Example3" class="form-control" name="employer_certificate" />
+                <label class="form-label" for="form6Example3">Certificate</label>
+            </div>
+
+        </div>
+
+
+        <div class="col">
+            <div data-mdb-input-init class="form-outline ">
+                <input type="text" id="form6Example4" class="form-control" name="employer_contact" />
+                <label class="form-label" for="form6Example4">Contact</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label-title">Employer/ Description</label>
+        <input id="editor" class="form-control" type="text" placeholder="Catgory Name" name="category_subheading">
+    </div>
+
+    <!-- Submit button -->
+    <div class="row mb-4">
+        <div class="col-md-4"></div>
+        <button data-mdb-ripple-init type="submit" class="btn btn-primary  mb-4 col-md-4">Register</button>
+    </div>
+</form>
+@endsection

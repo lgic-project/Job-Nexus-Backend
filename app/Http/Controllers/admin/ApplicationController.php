@@ -14,4 +14,8 @@ class ApplicationController extends Controller
         $applicationData = Application::all();
         return response()->json($applicationData);
     }
+    public function edit()
+    {
+        return view('admin.modules.employee.editemployee');
+    }
 }

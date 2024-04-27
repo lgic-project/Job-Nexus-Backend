@@ -14,4 +14,8 @@ class JobController extends Controller
         $jobData = Job::all();
         return response()->json($jobData);
     }
+    public function edit()
+    {
+        return view('admin.modules.employee.editemployee');
+    }
 }
