@@ -2,30 +2,30 @@
 
 @section('content')
 <h3>Register Employer</h3>
-<form method="POST" action="{{route('employer-save')}}" enctype="multipart/form-data>
-    @csrf
-    <!-- 2 column grid layout with text inputs for the first and last names -->
+<form method="post" action="{{route('employer-save')}}" enctype="multipart/form-data">
+    {{ csrf_field() }}
+
     <div class=" row mb-4">
-    <div class="col">
-        <div data-mdb-input-init class="form-outline">
-            <input type="text" id="form6Example1" class="form-control" name="employer_first_name" />
-            <label class="form-label" for="form6Example1">First name</label>
+        <div class="col">
+            <div data-mdb-input-init class="form-outline">
+                <input type="text" id="form6Example1" class="form-control" name="employer_first_name" />
+                <label class="form-label" for="form6Example1">First name</label>
+            </div>
         </div>
-    </div>
 
-    <div class="col">
-        <div data-mdb-input-init class="form-outline">
-            <input type="text" id="form6Example2" class="form-control" name="employer_middle_name" />
-            <label class="form-label" for="form6Example2">Middle Name</label>
+        <div class="col">
+            <div data-mdb-input-init class="form-outline">
+                <input type="text" id="form6Example2" class="form-control" name="employer_middle_name" />
+                <label class="form-label" for="form6Example2">Middle Name</label>
+            </div>
         </div>
-    </div>
 
-    <div class="col">
-        <div data-mdb-input-init class="form-outline">
-            <input type="text" id="form6Example2" class="form-control" name="employer_last_name" />
-            <label class="form-label" for="form6Example2">Last name</label>
+        <div class="col">
+            <div data-mdb-input-init class="form-outline">
+                <input type="text" id="form6Example2" class="form-control" name="employer_last_name" />
+                <label class="form-label" for="form6Example2">Last name</label>
+            </div>
         </div>
-    </div>
     </div>
 
     <!-- Text input -->
