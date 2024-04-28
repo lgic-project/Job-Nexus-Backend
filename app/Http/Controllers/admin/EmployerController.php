@@ -30,7 +30,7 @@ class EmployerController extends Controller
         $employerData->employer_slug = $employerData->employer_first_name;
         $employerData->employer_status = "Inactive";
         $employerData->save();
-        return redirect('{{route(employer-save}}');
+        return view('admin.modules.employer.addemployer');
     }
     public function index()
     {
@@ -39,7 +39,8 @@ class EmployerController extends Controller
     public function list()
     {
         $employerData = Employer::all();
-        return view('admin.modules.empsloyee.listemployee', compact('employerData'));
+        return response()->json($employerData);
+        // return view('admin.modules.employer.listemployer', compact('employerData'));
     }
     public function edit()
     {
