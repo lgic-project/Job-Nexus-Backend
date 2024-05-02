@@ -43,9 +43,12 @@ class EmployerController extends Controller
         // return response()->json($employerData);
         return view('admin.modules.employer.listemployer', compact('employerData'));
     }
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.modules.employee.editemployee');
+        $employerData = Employer::findorFail($id);
+        // dd($employerData);
+
+        return view('admin.modules.employee.editemployee', compact('employerData'));
     }
 
     public function verify($id)

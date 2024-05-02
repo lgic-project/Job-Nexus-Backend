@@ -57,9 +57,11 @@
 
 
             <td>
-                <button type="button" class="btn btn-primary btn-sm btn-rounded mx-2 px-2 ">
-                    Edit
-                </button>
+                <a href="/employer/edit/{{$employer->id}}">
+                    <button type="button" class="btn btn-primary btn-sm btn-rounded mx-2 px-2 ">
+                        Edit
+                    </button>
+                </a>
                 <a href="/employer/delete/{{$employer->id}}">
 
                     <button type="button" class="btn btn-danger btn-sm btn-rounded mx-2 px-2" onclick="return confirmStatusChange('delete')">
