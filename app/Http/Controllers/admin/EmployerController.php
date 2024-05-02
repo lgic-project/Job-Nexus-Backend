@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use App\Models\Employer;
 use Illuminate\Http\Request;
 
@@ -39,11 +40,38 @@ class EmployerController extends Controller
     public function list()
     {
         $employerData = Employer::all();
-        return response()->json($employerData);
-        // return view('admin.modules.employer.listemployer', compact('employerData'));
+        // return response()->json($employerData);
+        return view('admin.modules.employer.listemployer', compact('employerData'));
     }
     public function edit()
     {
         return view('admin.modules.employee.editemployee');
+    }
+
+    public function verify($id)
+    {
+        $record = Employer::findorFail($id);
+        if ($record->employer_status == "verified") {
+            $record->employer_status = 'under verification';
+        } else
+
+            $record->employer_status = 'verified';
+        $record->save();
+        $employerData = Employer::all();
+        return view('admin.modules.employer.listemployer', compact('employerData'));
+    }
+
+    public function profile($id)
+    {
+        $employerData = Employer::findorFail($id);
+        return view('admin.modules.employer.employerprofile', compact('employerData'));
+    }
+
+    public function delete($id)
+    {
+        $employerDelete = Employer::findorFail($id);
+        $employerDelete->delete();
+        $employerData = Employer::all();
+        return view('admin.modules.employer.listemployer', compact('employerData'));
     }
 }

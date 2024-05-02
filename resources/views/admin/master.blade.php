@@ -20,6 +20,7 @@
     <link id="pagestyle" href="/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous">
 
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
@@ -118,6 +119,12 @@
             .catch(error => {
                 console.error(error);
             });
+    </script>
+    <!-- script for confirmation -->
+    <script>
+        function confirmStatusChange(a) {
+            return confirm("Are you sure you want to" + " " + a + "?");
+        }
     </script>
 </body>
 

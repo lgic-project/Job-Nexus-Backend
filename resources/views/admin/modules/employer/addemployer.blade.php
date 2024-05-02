@@ -1,7 +1,17 @@
 @extends('admin.master')
 
 @section('content')
-<h3>Register Employer</h3>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+        <h3>Register Employer</h3>
+    </div>
+    <div class="col-md-3">
+        <a href="/employer"><button class="btn btn-danger"><i class="fa-solid fa-list"></i> View List</button></a>
+
+    </div>
+</div>
 <form method="post" action="{{route('employer-save')}}" enctype="multipart/form-data">
     {{ csrf_field() }}
 

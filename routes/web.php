@@ -24,10 +24,13 @@ Route::get('/', function () {
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employee-index');
 Route::get('/employee/edit', [EmployeeController::class, 'edit'])->name('employee-edit');
 //Employer Routes
-Route::get('/employer', [EmployerController::class, 'index'])->name('employer-index');
+Route::get('/employer', [EmployerController::class, 'list'])->name('employer-list');
 Route::get('/employer/edit', [EmployerController::class, 'edit'])->name('employer-edit');
 Route::post('/employer/save', [EmployerController::class, 'save'])->name('employer-save');
-Route::get('/employer/list', [EmployerController::class, 'list'])->name('employer-list');
+Route::get('/employer/verification/{id}', [EmployerController::class, 'verify'])->name('employer-verification');
+Route::get('/employer/profile/{id}', [EmployerController::class, 'profile'])->name('employer-profile');
+Route::get('/employer/register', [EmployerController::class, 'index'])->name('employer-index');
+Route::get('/employer/delete/{id}', [EmployerController::class, 'delete'])->name('employer-delete');
 //Employee Routes
 Route::get('/job', [JobController::class, 'index'])->name('job-index');
 Route::get('/job', [JobController::class, 'edit'])->name('job-edit');
