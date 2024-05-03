@@ -44,6 +44,7 @@ class EmployeeController extends Controller
         return view('admin.modules.employee.addemployee');
     }
 
+    //Verification
     public function verify($id)
     {
         $record = Employee::findorFail($id);
@@ -53,6 +54,14 @@ class EmployeeController extends Controller
 
             $record->employee_status = 'verified';
         $record->save();
+        $employeeData = Employee::all();
+        return view('admin.modules.employee.listemployee', compact('employeeData'));
+    }
+
+    public function delete($id)
+    {
+        $employeeDelete = Employee::findorFail($id);
+        $employeeDelete->delete();
         $employeeData = Employee::all();
         return view('admin.modules.employee.listemployee', compact('employeeData'));
     }

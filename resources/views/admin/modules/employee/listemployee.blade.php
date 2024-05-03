@@ -62,15 +62,23 @@
                 }
             </script>
             <td>
-                <button type="button" class="btn btn-primary btn-sm btn-rounded ">
-                    Edit
-                </button>
-                <button type="button" class="btn btn-danger btn-sm btn-rounded">
-                    Delete
-                </button>
-                <button type="button" class="btn btn-success btn-sm btn-rounded">
-                    Details
-                </button>
+                <a href="/employee/edit/{{$employee->id}}">
+                    <button type="button" class="btn btn-primary btn-sm btn-rounded mx-2 px-2 ">
+                        Edit
+                    </button>
+                </a>
+                <a href="/employee/delete/{{$employee->id}}">
+
+                    <button type="button" class="btn btn-danger btn-sm btn-rounded mx-2 px-2" onclick="return confirmStatusChange('delete')">
+                        Delete
+                    </button>
+                </a>
+                <a href="/employee/profile/{{$employee->id}}">
+
+                    <button type="button" class="btn btn-warning btn-sm btn-rounded mx-2 px-2">
+                        Details
+                    </button>
+                </a>
             </td>
         </tr>
         @endforeach
