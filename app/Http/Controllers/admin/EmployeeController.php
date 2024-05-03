@@ -65,4 +65,10 @@ class EmployeeController extends Controller
         $employeeData = Employee::all();
         return view('admin.modules.employee.listemployee', compact('employeeData'));
     }
+
+    public function profile($id)
+    {
+        $employeeData = Employee::findorFail($id);
+        return view('admin.modules.employee.employeeprofile', compact('employeeData'));
+    }
 }
