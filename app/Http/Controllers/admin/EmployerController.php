@@ -48,7 +48,7 @@ class EmployerController extends Controller
         $employerData = Employer::findorFail($id);
         // dd($employerData);
 
-        return view('admin.modules.employee.editemployee', compact('employerData'));
+        return view('admin.modules.employer.editemployer', compact('employerData'));
     }
 
     public function verify($id)
