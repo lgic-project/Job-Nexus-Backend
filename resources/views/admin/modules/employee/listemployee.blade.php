@@ -2,7 +2,23 @@
 
 @section('content')
 <table class="table align-middle mb-0 bg-white">
-    <h3 style="text-align: center;">Our Registered Users</h3>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+
+                    <h3 style="text-align: center;">Our Registered Users</h3>
+                </div>
+                <div class="col-md-3">
+                    <a href="/employee/register"><button class="btn btn-success"><i class="fa-solid fa-plus"></i> Create New</button></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <thead class="bg-light">
         <tr>
             <th>Name</th>
@@ -27,19 +43,42 @@
                 <p class="fw-normal mb-1">{{$employee->employee_address}}</p>
                 <p class="text-muted mb-0">{{$employee->employee_contact}}</p>
             </td>
+            @if($employee->employee_status == 'Inactive')
+            <?php $color = 'danger'; ?>
+            @elseif($employee->employee_status == 'under verification')
+            <?php $color = 'danger'; ?>
+            @else
+            <?php $color = 'success'; ?>
+            @endif
             <td>
-                <span class="badge badge-success rounded-pill d-inline ">Active</span>
+                <a href="/employee/verification/{{$employee->id}}" onclick="return confirmStatusChange('change status')">
+                    <span class="badge badge-{{$color}} rounded-pill d-inline">{{$employee->employee_status}}</span>
+                </a>
             </td>
+
+            <script>
+                function confirmStatusChange(a) {
+                    return confirm("Are you sure you want to" + " " + a + "?");
+                }
+            </script>
             <td>
-                <button type="button" class="btn btn-primary btn-sm btn-rounded ">
-                    Edit
-                </button>
-                <button type="button" class="btn btn-danger btn-sm btn-rounded">
-                    Delete
-                </button>
-                <button type="button" class="btn btn-successbtn-sm btn-rounded">
-                    Details
-                </button>
+                <a href="/employee/edit/{{$employee->id}}">
+                    <button type="button" class="btn btn-primary btn-sm btn-rounded mx-2 px-2 ">
+                        Edit
+                    </button>
+                </a>
+                <a href="/employee/delete/{{$employee->id}}">
+
+                    <button type="button" class="btn btn-danger btn-sm btn-rounded mx-2 px-2" onclick="return confirmStatusChange('delete')">
+                        Delete
+                    </button>
+                </a>
+                <a href="/employee/profile/{{$employee->id}}">
+
+                    <button type="button" class="btn btn-warning btn-sm btn-rounded mx-2 px-2">
+                        Details
+                    </button>
+                </a>
             </td>
         </tr>
         @endforeach
