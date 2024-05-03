@@ -43,4 +43,17 @@ class EmployeeController extends Controller
         $employeeData->save();
         return view('admin.modules.employee.addemployee');
     }
+
+    public function verify($id)
+    {
+        $record = Employee::findorFail($id);
+        if ($record->employee_status == "verified") {
+            $record->employee_status = 'under verification';
+        } else
+
+            $record->employee_status = 'verified';
+        $record->save();
+        $employeeData = Employee::all();
+        return view('admin.modules.employee.listemployee', compact('employeeData'));
+    }
 }
