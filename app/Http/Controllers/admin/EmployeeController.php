@@ -16,10 +16,7 @@ class EmployeeController extends Controller
         return view('admin.modules.employee.listemployee', compact('employeeData'));
     }
 
-    public function edit()
-    {
-        return view('admin.modules.employee.editemployee');
-    }
+
     public function index()
     {
         return view('admin.modules.employee.addemployee');
@@ -70,5 +67,13 @@ class EmployeeController extends Controller
     {
         $employeeData = Employee::findorFail($id);
         return view('admin.modules.employee.employeeprofile', compact('employeeData'));
+    }
+
+    public function edit($id)
+    {
+        $employeeData = Employee::findorFail($id);
+        // dd($employeeData);
+
+        return view('admin.modules.employee.editemployee', compact('employeeData'));
     }
 }

@@ -12,13 +12,13 @@
 
     </div>
 </div>
-<form method="post" action="" enctype="multipart/form-data">
+<form method="post" action="/employer/update/{{$employerData->id}}" enctype="multipart/form-data">
     {{ csrf_field() }}
 
     <div class=" row mb-4">
         <div class="col">
             <div data-mdb-input-init class="form-outline">
-                <input type="text" id="form6Example1" class="form-control" name="employer_first_name" value="{{$employerData}}" />
+                <input type="text" id="form6Example1" class="form-control" name="employer_first_name" value="{{$employerData->employer_first_name}}" />
                 <label class=" form-label" for="form6Example1">First name</label>
             </div>
         </div>
@@ -77,7 +77,6 @@
 
 
 
-
     <div class="col">
         <div data-mdb-input-init class="form-outline ">
             <input type="text" id="form6Example4" class="form-control" name="employer_contact" value="{{$employerData->employer_contact}}" />
@@ -85,16 +84,29 @@
         </div>
     </div>
     </div>
-
-    <div class="mb-3">
-        <label class="form-label-title">Employer/ Description</label>
-        <input type="textarea" id="form6Example4" class="form-control" name="employer_description" value="{{$employerData->employer_description}}" />
-    </div>
-
-
     <div class="row mb-4">
-        <div class="col-md-4"></div>
-        <button data-mdb-ripple-init type="submit" class="btn btn-primary  mb-4 col-md-4">Save</button>
-    </div>
+        <div class="col-md-3">
+            <div data-mdb-input-init class="form-outline ">
+                <input type="file" id="form6Example3" class="form-control" name="employer_image" />
+                <label class=" form-label" for="form6Example3">Profile Picture</label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div data-mdb-input-init class="form-outline ">
+                <input type="file" id="form6Example3" class="form-control" name="employer_certificate" />
+                <label class=" form-label" for="form6Example3">Certificate</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label-title">Employer/ Description</label>
+            <input type="textarea" id="form6Example4" class="form-control" name="employer_description" value="{{$employerData->employer_description}}" />
+        </div>
+
+
+        <div class="row mb-4">
+            <div class="col-md-4"></div>
+            <button data-mdb-ripple-init type="submit" class="btn btn-primary  mb-4 col-md-4">Save</button>
+        </div>
 </form>
 @endsection
