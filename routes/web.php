@@ -27,7 +27,8 @@ Route::get('/employee/register', [EmployeeController::class, 'index'])->name('em
 Route::get('/employee/verification/{id}', [EmployeeController::class, 'verify'])->name('employee-verify');
 Route::get('/employee/delete/{id}', [EmployeeController::class, 'delete'])->name('employee-delete');
 Route::get('/employee/profile/{id}', [EmployeeController::class, 'profile'])->name('employee-profile');
-Route::get('/employee/eit/{id}', [EmployeeController::class, 'edit'])->name('employee-edit');
+Route::get('/employee/edit/{id}', [EmployeeController::class, 'edit'])->name('employee-edit');
+Route::post('/employee/update/{id}', [EmployeeController::class, 'update'])->name('employee-update');
 //Employer Routes
 Route::get('/employer', [EmployerController::class, 'list'])->name('employer-list');
 Route::get('/employer/edit/{id}', [EmployerController::class, 'edit'])->name('employer-edit');

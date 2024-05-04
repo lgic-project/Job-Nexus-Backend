@@ -76,4 +76,35 @@ class EmployeeController extends Controller
 
         return view('admin.modules.employee.editemployee', compact('employeeData'));
     }
+
+    public function update(Request $request, $id)
+    {
+        $employeeData = Employee::find($id);
+        $employeeData->employee_first_name = request('employee_first_name');
+        $employeeData->employee_middle_name = request('employee_middle_name');
+        $employeeData->employee_last_name = request('employee_last_name');
+        $employeeData->employee_email = request('employee_email');
+        $employeeData->employee_password = request('employee_password');
+        $employeeData->employee_address = request('employee_address');
+        $employeeData->employee_contact = request('employee_contact');
+        $employeeData->employee_description = request('employee_description');
+        $employeeData->employee_slug = request('employee_first_name');
+        $employeeData->employee_status = $employeeData->employee_status;
+        if ($request->hasFile("employee_image")) {
+            $newemployeeImageName = time() . '-' . $request->employee_first_name . '.' . $request->employee_image->extension();
+            $request->employee_image->move(public_path('images/employee/profile/'), $newemployeeImageName);
+            $employeeData->employee_image = $newemployeeImageName;
+        } else {
+            $employeeData->employee_image =  $employeeData->employee_image;
+        }
+        if ($request->hasFile("employee_cv")) {
+            $newemployeeImageName2 = time() . '-' . $request->employee_first_name . '.' . $request->employee_cv->extension();
+            $request->employee_cv->move(public_path('images/employee/cv/'), $newemployeeImageName2);
+            $employeeData->employee_cv = $newemployeeImageName2;
+        } else {
+            $employeeData->employee_cv =  $employeeData->employee_cv;
+        }
+        $employeeData->save();
+        return redirect()->route('employee-list');
+    }
 }

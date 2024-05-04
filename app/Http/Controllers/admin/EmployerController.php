@@ -92,13 +92,17 @@ class EmployerController extends Controller
         if ($request->hasFile("employer_image")) {
             $newemployerImageName = time() . '-' . $request->employer_first_name . '.' . $request->employer_image->extension();
             $request->employer_image->move(public_path('images/employer/profile/'), $newemployerImageName);
+            $employerData->employer_image = $newemployerImageName;
+        } else {
+            $employerData->employer_image = $employerData->employer_image;
         }
         if ($request->hasFile("employer_certificate")) {
             $newemployerImageName2 = time() . '-' . $request->employer_first_name . '.' . $request->employer_certificate->extension();
             $request->employer_certificate->move(public_path('images/employer/certificate/'), $newemployerImageName2);
+            $employerData->employer_certificate = $newemployerImageName2;
+        } else {
+            $employerData->employer_certificate = $employerData->employer_certificate;
         }
-        $employerData->employer_image = $newemployerImageName;
-        $employerData->employer_certificate = $newemployerImageName2;
         $employerData->save();
         return redirect()->route('employer-list');
     }
