@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('job_status');
             $table->string('job_contact');
             $table->string('job_validity');
+            $table->string('job_type');
+            $table->string('job_hour');
             $table->longText('job_description');
             $table->timestamps();
         });

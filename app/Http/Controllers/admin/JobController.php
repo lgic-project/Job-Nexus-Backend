@@ -11,11 +11,16 @@ class JobController extends Controller
     //
     public function index()
     {
-        $jobData = Job::all();
-        return response()->json($jobData);
+        // return view('admin.modules.jobs.createjob');
+        return view('admin.modules.jobs.newjob');
     }
-    public function edit()
+    public function save(Request $req)
     {
-        return view('admin.modules.employee.editemployee');
+        $jobData = new Job();
+        $jobData->fill($req->all());
+        $jobData->job_status = "Not Verified";
+        $jobData->job_slug = $req->job_title;
+        $jobData->save();
+        return view('admin.modules.jobs.newjob');
     }
 }

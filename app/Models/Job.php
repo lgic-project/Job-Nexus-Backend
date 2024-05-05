@@ -22,6 +22,9 @@ class Job extends Model
         'job_status',
         'job_contact',
         'job_validity',
-        'job_description'
+        'job_description',
+        'job_type',
+        'job_hour',
+
     ];
 }
