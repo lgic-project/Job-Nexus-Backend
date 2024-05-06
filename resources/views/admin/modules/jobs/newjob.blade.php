@@ -8,7 +8,7 @@
         <h3>Post a Vacancy</h3>
     </div>
     <div class="col-md-3">
-        <a href="/job"><button class="btn btn-danger"><i class="fa-solid fa-list"></i> View List</button></a>
+        <a href="/job/list"><button class="btn btn-danger"><i class="fa-solid fa-list"></i> View List</button></a>
 
     </div>
 </div>

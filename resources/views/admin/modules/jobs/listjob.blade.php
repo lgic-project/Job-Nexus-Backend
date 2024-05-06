@@ -14,38 +14,41 @@
     </div>
     <thead class="bg-light">
         <tr>
-            <th>Name</th>
-            <th>Contact</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Address</th>
+            <th>Company</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($employerData as $employer)
+        @foreach($jobData as $jobData)
         <tr>
             <td>
                 <div class="d-flex align-items-center">
                     <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                     <div class="ms-3">
-                        <p class="fw-bold mb-1">{{$employer->employer_first_name}}</p>
-                        <p class="text-muted mb-0">{{$employer->employer_email}}</p>
+                        <p class="fw-bold mb-1">{{$jobData->job_title}}</p>
+                        <p class="text-muted mb-0">{{$jobData->job_type}}</p>
                     </div>
                 </div>
             </td>
             <td>
-                <p class="fw-normal mb-1">{{$employer->employer_address}}</p>
-                <p class="text-muted mb-0">{{$employer->employer_contact}}</p>
+                <p class="fw-normal mb-1">{{$jobData->job_address}}</p>
+                <p class="text-muted mb-0">{{$jobData->job_contact}}</p>
             </td>
-            @if($employer->employer_status == 'Inactive')
+
+            <td>
+                <p class="fw-normal mb-1">{{$jobData->job_contact}}</p>
+            </td>
+            @if($jobData->job_status == 'Not Verified')
             <?php $color = 'danger'; ?>
-            @elseif($employer->employer_status == 'under verification')
-            <?php $color = 'danger'; ?>
+
             @else
             <?php $color = 'success'; ?>
             @endif
             <td>
-                <a href="/employer/verification/{{$employer->id}}" onclick="return confirmStatusChange('change status')">
-                    <span class="badge badge-{{$color}} rounded-pill d-inline">{{$employer->employer_status}}</span>
+                <a href="/jobData/verification/{{$jobData->id}}" onclick="return confirmStatusChange('change status')">
+                    <span class="badge badge-{{$color}} rounded-pill d-inline">{{$jobData->job_status}}</span>
                 </a>
             </td>
 
@@ -57,18 +60,18 @@
 
 
             <td>
-                <a href="/employer/edit/{{$employer->id}}">
+                <a href="/job/edit/{{$jobData->id}}">
                     <button type="button" class="btn btn-primary btn-sm btn-rounded mx-2 px-2 ">
                         Edit
                     </button>
                 </a>
-                <a href="/employer/delete/{{$employer->id}}">
+                <a href="/job/delete/{{$jobData->id}}">
 
                     <button type="button" class="btn btn-danger btn-sm btn-rounded mx-2 px-2" onclick="return confirmStatusChange('delete')">
                         Delete
                     </button>
                 </a>
-                <a href="/employer/profile/{{$employer->id}}">
+                <a href="/job/profile/{{$jobData->id}}">
 
                     <button type="button" class="btn btn-warning btn-sm btn-rounded mx-2 px-2">
                         Details

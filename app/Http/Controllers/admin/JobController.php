@@ -23,4 +23,18 @@ class JobController extends Controller
         $jobData->save();
         return view('admin.modules.jobs.newjob');
     }
+    public function list()
+    {
+        $jobData = Job::all();
+        return view('admin.modules.jobs.listjob', compact('jobData'));
+        // return response()->json($jobData);
+    }
+
+    public function delete($id)
+    {
+        $jobDelete = Job::findorFail($id);
+        $jobDelete->delete();
+        $jobData = Job::all();
+        return view('admin.modules.job.listjob', compact('jobData'));
+    }
 }
