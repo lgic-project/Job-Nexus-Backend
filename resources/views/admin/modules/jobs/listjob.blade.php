@@ -47,7 +47,7 @@
             <?php $color = 'success'; ?>
             @endif
             <td>
-                <a href="/jobData/verification/{{$jobData->id}}" onclick="return confirmStatusChange('change status')">
+                <a href="/job/verify/{{$jobData->id}}" onclick="return confirmStatusChange('change status')">
                     <span class="badge badge-{{$color}} rounded-pill d-inline">{{$jobData->job_status}}</span>
                 </a>
             </td>

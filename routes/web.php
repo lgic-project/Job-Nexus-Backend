@@ -42,7 +42,10 @@ Route::post('/employer/update/{id}', [EmployerController::class, 'update'])->nam
 Route::get('/job', [JobController::class, 'index'])->name('job-index');
 Route::get('/job/list', [JobController::class, 'list'])->name('job-list');
 Route::get('/job/delete/{id}', [JobController::class, 'delete'])->name('job-delete');
+Route::get('/job/verify/{id}', [JobController::class, 'verify'])->name('job-verify');
+Route::get('/job/edit/{id}', [JobController::class, 'edit'])->name('job-edit');
 Route::post('/job/save', [JobController::class, 'save'])->name('job-save');
+Route::post('/job/update/{id}', [JobController::class, 'update'])->name('job-update');
 //Employee Routes
 Route::get('/application-details', [ApplicationController::class, 'index'])->name('application-index');
 Route::get('/application-details', [ApplicationController::class, 'edit'])->name('application-edit');
