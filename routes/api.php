@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\JobController;
+use App\Http\Controllers\admin\EmployeeController;
+use App\Http\Controllers\admin\EmployerController;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +25,9 @@ Route::get('/job-api', function () {
     $jobData = Job::all();
     return response()->json($jobData);
 });
+
+Route::get('/jobs', [JobController::class, 'filterJobs']);
+Route::post('/job/save', [JobController::class, 'save']);
+
+//routes for employer
+Route::post('/employer/save', [EmployerController::class, 'save']);

@@ -76,4 +76,29 @@ class JobController extends Controller
         $jobData->save();
         return redirect()->route('job-list');
     }
+
+    public function filterJobs(Request $request)
+    {
+        $query = Job::query();
+
+        if ($request->has('job_category')) {
+            $query->where('job_category', $request->input('job_category'));
+        }
+
+        if ($request->has('job_title')) {
+            $query->where('job_title', 'like', '%' . $request->input('job_title') . '%');
+        }
+
+        if ($request->has('job_type')) {
+            $query->where('job_type', $request->input('job_type'));
+        }
+
+        if ($request->has('job_address')) {
+            $query->where('job_address', 'like', '%' . $request->input('job_address') . '%');
+        }
+
+        $jobs = $query->get();
+
+        return response()->json($jobs);
+    }
 }
