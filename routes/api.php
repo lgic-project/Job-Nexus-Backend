@@ -30,5 +30,7 @@ Route::get('/jobs', [JobController::class, 'filterJobs']);
 Route::post('/job/save', [JobController::class, 'save']);
 
 //routes for employer
-Route::post('/employer/save', [EmployerController::class, 'save']);
 Route::post('/employer/store', [EmployerController::class, 'store']);
+
+//routes for employee
+Route::post('/employee/store', [EmployeeController::class, 'store']);

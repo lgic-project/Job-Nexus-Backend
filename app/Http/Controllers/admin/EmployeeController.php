@@ -10,6 +10,17 @@ use App\Models\Employee;
 class EmployeeController extends Controller
 {
     //
+
+    public function store(Request $req)
+    {
+        $employeeData = new Employee();
+        $employeeData->fill($req->all());
+        $employeeData->employee_slug = $employeeData->employee_first_name;
+        $employeeData->employee_status = "Inactive";
+        $employeeData->save();
+        return response()->json($employeeData);
+    }
+
     public function list()
     {
         $employeeData = Employee::all();
