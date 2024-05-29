@@ -33,6 +33,7 @@ Route::post('/employee/update/{id}', [EmployeeController::class, 'update'])->nam
 Route::get('/employer', [EmployerController::class, 'list'])->name('employer-list');
 Route::get('/employer/edit/{id}', [EmployerController::class, 'edit'])->name('employer-edit');
 Route::post('/employer/save', [EmployerController::class, 'save'])->name('employer-save');
+Route::post('/employer/store', [EmployerController::class, 'store'])->name('employer-store');
 Route::get('/employer/verification/{id}', [EmployerController::class, 'verify'])->name('employer-verification');
 Route::get('/employer/profile/{id}', [EmployerController::class, 'profile'])->name('employer-profile');
 Route::get('/employer/register', [EmployerController::class, 'index'])->name('employer-index');

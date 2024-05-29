@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 class EmployerController extends Controller
 {
     //
+    public function store(Request $req)
+    {
+        $employerData = new Employer();
+        $employerData->fill($req->all());
+        $employerData->employer_slug = $employerData->employer_first_name;
+        $employerData->employer_status = "Inactive";
+        $employerData->save();
+        return response()->json($employerData);
+    }
 
     public function save(Request $req)
     {

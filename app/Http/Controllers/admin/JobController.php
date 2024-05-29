@@ -81,8 +81,8 @@ class JobController extends Controller
     {
         $query = Job::query();
 
-        if ($request->has('job_category')) {
-            $query->where('job_category', $request->input('job_category'));
+        if ($request->has('job_company_name')) {
+            $query->where('job_company_name', 'like', '%' . $request->input('job_company_name'));
         }
 
         if ($request->has('job_title')) {
