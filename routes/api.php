@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
@@ -34,3 +35,7 @@ Route::post('/employer/store', [EmployerController::class, 'store']);
 
 //routes for employee
 Route::post('/employee/store', [EmployeeController::class, 'store']);
+
+//route for category
+Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category/{title}', [CategoryController::class, 'getJobsByCategory']);
