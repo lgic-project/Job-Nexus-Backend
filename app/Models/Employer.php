@@ -25,4 +25,9 @@ class Employer extends Model
         'employer_description',
         'employer_certificate'
     ];
+
+    public function job()
+    {
+        return $this->hasMany(Job::class, 'job_posted_by');
+    }
 }

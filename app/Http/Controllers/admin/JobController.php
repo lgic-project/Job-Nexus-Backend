@@ -104,4 +104,10 @@ class JobController extends Controller
 
         return response()->json($jobs);
     }
+
+    public function getAllJobDetails()
+    {
+        $jobs = Job::with(['category', 'employer', 'application'])->get();
+        return response()->json($jobs);
+    }
 }

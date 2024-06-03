@@ -42,6 +42,7 @@ Route::post('/employer/update/{id}', [EmployerController::class, 'update'])->nam
 //Employee Routes
 Route::get('/job', [JobController::class, 'index'])->name('job-index');
 Route::get('/job/list', [JobController::class, 'list'])->name('job-list');
+Route::get('/job/all', [JobController::class, 'getAllJobDetails'])->name('job-getAllJobDetails');
 Route::get('/job/delete/{id}', [JobController::class, 'delete'])->name('job-delete');
 Route::get('/job/verify/{id}', [JobController::class, 'verify'])->name('job-verify');
 Route::get('/job/edit/{id}', [JobController::class, 'edit'])->name('job-edit');

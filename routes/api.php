@@ -26,9 +26,11 @@ Route::get('/job-api', function () {
     $jobData = Job::all();
     return response()->json($jobData);
 });
-
+//routes for job
 Route::get('/jobs', [JobController::class, 'filterJobs']);
 Route::post('/job/save', [JobController::class, 'save']);
+Route::get('/job/all', [JobController::class, 'getAllJobDetails']);
+
 
 //routes for employer
 Route::post('/employer/store', [EmployerController::class, 'store']);

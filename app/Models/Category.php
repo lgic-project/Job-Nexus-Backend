@@ -14,4 +14,9 @@ class Category extends Model
         'category_title',
         'category_image'
     ];
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class, 'job_category');
+    }
 }

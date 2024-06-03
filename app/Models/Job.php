@@ -27,4 +27,18 @@ class Job extends Model
         'job_hour',
 
     ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'id');
+    }
+
+    public function application()
+    {
+        return $this->hasMany(Application::class, 'job_id');
+    }
+
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class, 'id');
+    }
 }
