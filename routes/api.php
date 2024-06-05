@@ -46,3 +46,4 @@ Route::get('/category/{title}', [CategoryController::class, 'getJobsByCategory']
 //routes for wishlist
 Route::get('/wishlist/{id}', [WishlistController::class, 'showWishlist']);
 Route::get('/wishlist/{job_id}/{emp_id}', [WishlistController::class, 'deleteWishlist']);
+Route::get('/wishlist/save/{job_id}/{emp_id}', [WishlistController::class, 'saveWishlist']);
