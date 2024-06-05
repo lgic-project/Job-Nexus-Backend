@@ -21,7 +21,6 @@ class WishlistController extends Controller
         $wishlistEntry = Wishlist::where('job_id', $job_id)
             ->where('employee_id', $emp_id)
             ->first();
-        return response()->json($wishlistEntry);
 
         // Check if the entry exists
         if ($wishlistEntry) {
