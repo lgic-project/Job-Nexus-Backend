@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
+use App\Http\Controllers\admin\WishlistController;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,3 +42,7 @@ Route::post('/employee/store', [EmployeeController::class, 'store']);
 //route for category
 Route::get('/category', [CategoryController::class, 'index']);
 Route::get('/category/{title}', [CategoryController::class, 'getJobsByCategory']);
+
+//routes for wishlist
+Route::get('/wishlist/{id}', [WishlistController::class, 'showWishlist']);
+Route::get('/wishlist/{job_id}/{emp_id}', [WishlistController::class, 'deleteWishlist']);
