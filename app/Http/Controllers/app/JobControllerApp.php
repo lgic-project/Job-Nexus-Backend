@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\returnSelf;
+
 class JobControllerApp extends Controller
 {
     //
@@ -121,5 +123,11 @@ class JobControllerApp extends Controller
     {
         $jobs = Job::with(['category', 'employer', 'application'])->get();
         return response()->json($jobs);
+    }
+
+    public function detail($id)
+    {
+        $jobData = Job::findorFail($id);
+        return response()->json($jobData);
     }
 }

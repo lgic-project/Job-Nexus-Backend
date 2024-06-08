@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
 use App\Http\Controllers\admin\WishlistController;
+use App\Http\Controllers\app\JobControllerApp;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::get('/job-api', function () {
 Route::get('/jobs', [JobController::class, 'filterJobs']);
 Route::post('/job/save', [JobController::class, 'saveMobile']);
 Route::get('/job/all', [JobController::class, 'getAllJobDetails']);
+Route::get('/job/detail/{id}', [JobControllerApp::class, 'detail']);
 
 
 //routes for employer
@@ -45,6 +47,6 @@ Route::get('/category/{title}', [CategoryController::class, 'getJobsByCategory']
 
 //routes for wishlist
 Route::get('/wishlist/{id}', [WishlistController::class, 'showWishlist']);
-Route::get('/wishlist/{job_id}/{emp_id}', [WishlistController::class, 'deleteWishlist']);
 Route::post('/wishlist/save/{job_id}/{emp_id}', [WishlistController::class, 'saveWishlist']);
+Route::get('/wishlist/{job_id}/{emp_id}', [WishlistController::class, 'deleteWishlist']);
 Route::get('/wishlist/view/{job_id}/{emp_id}', [WishlistController::class, 'isFavorite']);
