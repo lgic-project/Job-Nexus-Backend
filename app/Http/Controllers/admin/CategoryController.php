@@ -26,4 +26,15 @@ class CategoryController extends Controller
         $jobs = $category->jobs;
         return response()->json($jobs);
     }
+    public function save(Request $request)
+    {
+        $categoryData = new Category();
+        $categoryData->fill($request->all());
+        $categoryData->save();
+        return view('admin.modules.category.newcategory');
+    }
+    public function show()
+    {
+        return view('admin.modules.category.newcategory');
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\ApplicationController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\app\ApplicationControllerApp;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
@@ -69,6 +70,12 @@ Route::post('/app/job/update/{id}', [JobControllerApp::class, 'update'])->name('
 //Employee Routes
 Route::get('/application-details', [ApplicationController::class, 'index'])->name('application-index');
 Route::get('/application-details', [ApplicationController::class, 'edit'])->name('application-edit');
+
+//Category ROutes
+
+Route::get('/category/show', [CategoryController::class, 'show'])->name('category-show');
+Route::post('/category/save', [CategoryController::class, 'save'])->name('category-save');
+
 
 Auth::routes();
 
