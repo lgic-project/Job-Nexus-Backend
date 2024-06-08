@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\ApplicationController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\app\ApplicationControllerApp;
+use App\Http\Controllers\app\CategoryControllerApp;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
 use App\Http\Controllers\admin\JobController;
@@ -80,3 +81,4 @@ Route::post('/category/save', [CategoryController::class, 'save'])->name('catego
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/category/data', [CategoryControllerApp::class, 'show'])->name('category-show');
