@@ -1,0 +1,189 @@
+<div class="app-sidebar sidebar-shadow">
+    <div class="app-header__logo">
+        <div class="logo-src"></div>
+        <div class="header__pane ml-auto">
+            <div>
+                <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="app-header__mobile-menu">
+        <div>
+            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="app-header__menu">
+        <span>
+            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                <span class="btn-icon-wrapper">
+                    <i class="fa-solid fa-circle-plus"></i>
+                </span>
+            </button>
+        </span>
+    </div>
+    <div class="scrollbar-sidebar">
+        <div class="app-sidebar__inner">
+            <ul class="vertical-nav-menu">
+                <li class="app-sidebar__heading">Category</li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-circle-plus"></i>
+
+                        Add Category
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-list"></i>
+                        List Category
+                    </a>
+                </li>
+                <li class="app-sidebar__heading">Products</li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-list"></i>
+                        List Product
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        Add Product
+                    </a>
+                </li>
+                <li class="app-sidebar__heading">Orders</li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-eye"></i>
+                        View Order
+                    </a>
+                </li>
+                <ul>
+                    <li>
+                        <a href="components-tabs.html">
+                            <i class="metismenu-icon">
+                            </i>Tabs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-accordions.html">
+                            <i class="metismenu-icon">
+                            </i>Accordions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-notifications.html">
+                            <i class="metismenu-icon">
+                            </i>Notifications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-modals.html">
+                            <i class="metismenu-icon">
+                            </i>Modals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-progress-bar.html">
+                            <i class="metismenu-icon">
+                            </i>Progress Bar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-tooltips-popovers.html">
+                            <i class="metismenu-icon">
+                            </i>Tooltips &amp; Popovers
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-carousel.html">
+                            <i class="metismenu-icon">
+                            </i>Carousel
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-calendar.html">
+                            <i class="metismenu-icon">
+                            </i>Calendar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-pagination.html">
+                            <i class="metismenu-icon">
+                            </i>Pagination
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-scrollable-elements.html">
+                            <i class="metismenu-icon">
+                            </i>Scrollable
+                        </a>
+                    </li>
+                    <li>
+                        <a href="components-maps.html">
+                            <i class="metismenu-icon">
+                            </i>Maps
+                        </a>
+                    </li>
+                </ul>
+                </li>
+                <li>
+                    <a href="tables-regular.html">
+                        <i class="metismenu-icon pe-7s-display2"></i>
+                        Tables
+                    </a>
+                </li>
+                <li class="app-sidebar__heading">Widgets</li>
+                <li>
+                    <a href="dashboard-boxes.html">
+                        <i class="metismenu-icon pe-7s-display2"></i>
+                        Dashboard Boxes
+                    </a>
+                </li>
+                <li class="app-sidebar__heading">Forms</li>
+                <li>
+                    <a href="forms-controls.html">
+                        <i class="metismenu-icon pe-7s-mouse">
+                        </i>Forms Controls
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-layouts.html">
+                        <i class="metismenu-icon pe-7s-eyedropper">
+                        </i>Forms Layouts
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-validation.html">
+                        <i class="metismenu-icon pe-7s-pendrive">
+                        </i>Forms Validation
+                    </a>
+                </li>
+                <li class="app-sidebar__heading">Charts</li>
+                <li>
+                    <a href="charts-chartjs.html">
+                        <i class="metismenu-icon pe-7s-graph2">
+                        </i>ChartJS
+                    </a>
+                </li>
+                <li class="app-sidebar__heading">PRO Version</li>
+                <li>
+                    <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/" target="_blank">
+                        <i class="metismenu-icon pe-7s-graph2">
+                        </i>
+                        Upgrade to PRO
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('app.master')
 
 @section('content')
 <table class="table align-middle mb-0 bg-white">
@@ -8,17 +8,13 @@
 
             <h3 style="text-align: center;">Posted Jobs</h3>
         </div>
-        <div class="col-md-3">
-            <a href="/job"><button class="btn btn-success"><i class="fa-solid fa-plus"></i> Create New</button></a>
-        </div>
+
     </div>
     <thead class="bg-light">
         <tr>
             <th>Title</th>
-            <th>Address</th>
             <th>Category</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>Details</th>
         </tr>
     </thead>
     <tbody>
@@ -33,24 +29,10 @@
                     </div>
                 </div>
             </td>
-            <td>
-                <p class="fw-normal mb-1">{{$jobData->job_address}}</p>
-                <p class="text-muted mb-0">{{$jobData->job_contact}}</p>
-            </td>
 
             <td>
-                <p class="fw-normal mb-1">{{$jobData->job_category}}</p>
-            </td>
-            @if($jobData->job_status == 'Not Verified')
-            <?php $color = 'danger'; ?>
+                <p class="fw-bold mb-1">{{$jobData->job_title}}</p>
 
-            @else
-            <?php $color = 'success'; ?>
-            @endif
-            <td>
-                <a href="/job/verify/{{$jobData->id}}" onclick="return confirmStatusChange('change status')">
-                    <span class="badge badge-{{$color}} rounded-pill d-inline">{{$jobData->job_status}}</span>
-                </a>
             </td>
 
             <script>
@@ -61,17 +43,7 @@
 
 
             <td>
-                <a href="/job/edit/{{$jobData->id}}">
-                    <button type="button" class="btn btn-primary btn-sm btn-rounded mx-2 px-2 ">
-                        Edit
-                    </button>
-                </a>
-                <a href="/job/delete/{{$jobData->id}}">
 
-                    <button type="button" class="btn btn-danger btn-sm btn-rounded mx-2 px-2" onclick="return confirmStatusChange('delete')">
-                        Delete
-                    </button>
-                </a>
 
 
                 <button type="button" class="btn btn-warning btn-sm btn-rounded mx-2 px-2" data-bs-toggle="modal" data-bs-target="#resumeModal">

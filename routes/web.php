@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\admin\ApplicationController;
+use App\Http\Controllers\app\ApplicationControllerApp;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
 use App\Http\Controllers\admin\JobController;
+use App\Http\Controllers\app\JobControllerApp;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,37 +19,57 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.master');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', function () {
+        return view('admin.modules.index');
+    });
+
+    Route::get('/', function () {
+        return view('app.master');
+    });
+    //Employee Routes
+    Route::get('/employee', [EmployeeController::class, 'list'])->name('employee-list');
+    Route::post('/employee/save', [EmployeeController::class, 'save'])->name('employee-save');
+    Route::get('/employee/register', [EmployeeController::class, 'index'])->name('employee-index');
+    Route::get('/employee/verification/{id}', [EmployeeController::class, 'verify'])->name('employee-verify');
+    Route::get('/employee/delete/{id}', [EmployeeController::class, 'delete'])->name('employee-delete');
+    Route::get('/employee/profile/{id}', [EmployeeController::class, 'profile'])->name('employee-profile');
+    Route::get('/employee/edit/{id}', [EmployeeController::class, 'edit'])->name('employee-edit');
+    Route::post('/employee/update/{id}', [EmployeeController::class, 'update'])->name('employee-update');
+    //Employer Routes
+    Route::get('/employer', [EmployerController::class, 'list'])->name('employer-list');
+    Route::get('/employer/edit/{id}', [EmployerController::class, 'edit'])->name('employer-edit');
+    Route::post('/employer/save', [EmployerController::class, 'save'])->name('employer-save');
+    Route::post('/employer/store', [EmployerController::class, 'store'])->name('employer-store');
+    Route::get('/employer/verification/{id}', [EmployerController::class, 'verify'])->name('employer-verification');
+    Route::get('/employer/profile/{id}', [EmployerController::class, 'profile'])->name('employer-profile');
+    Route::get('/employer/register', [EmployerController::class, 'index'])->name('employer-index');
+    Route::get('/employer/delete/{id}', [EmployerController::class, 'delete'])->name('employer-delete');
+    Route::post('/employer/update/{id}', [EmployerController::class, 'update'])->name('employer-update');
+    //Employee Routes
+    Route::get('/job', [JobController::class, 'index'])->name('job-index');
+    Route::get('/job/list', [JobController::class, 'list'])->name('job-list');
+    Route::get('/job/all', [JobController::class, 'getAllJobDetails']);
+    Route::get('/job/delete/{id}', [JobController::class, 'delete'])->name('job-delete');
+    Route::get('/job/verify/{id}', [JobController::class, 'verify'])->name('job-verify');
+    Route::get('/job/edit/{id}', [JobController::class, 'edit'])->name('job-edit');
+    Route::post('/job/save', [JobController::class, 'save'])->name('job-save');
+    Route::post('/job/update/{id}', [JobController::class, 'update'])->name('job-update');
+    //route for app
 });
-//Employee Routes
-Route::get('/employee', [EmployeeController::class, 'list'])->name('employee-list');
-Route::post('/employee/save', [EmployeeController::class, 'save'])->name('employee-save');
-Route::get('/employee/register', [EmployeeController::class, 'index'])->name('employee-index');
-Route::get('/employee/verification/{id}', [EmployeeController::class, 'verify'])->name('employee-verify');
-Route::get('/employee/delete/{id}', [EmployeeController::class, 'delete'])->name('employee-delete');
-Route::get('/employee/profile/{id}', [EmployeeController::class, 'profile'])->name('employee-profile');
-Route::get('/employee/edit/{id}', [EmployeeController::class, 'edit'])->name('employee-edit');
-Route::post('/employee/update/{id}', [EmployeeController::class, 'update'])->name('employee-update');
-//Employer Routes
-Route::get('/employer', [EmployerController::class, 'list'])->name('employer-list');
-Route::get('/employer/edit/{id}', [EmployerController::class, 'edit'])->name('employer-edit');
-Route::post('/employer/save', [EmployerController::class, 'save'])->name('employer-save');
-Route::post('/employer/store', [EmployerController::class, 'store'])->name('employer-store');
-Route::get('/employer/verification/{id}', [EmployerController::class, 'verify'])->name('employer-verification');
-Route::get('/employer/profile/{id}', [EmployerController::class, 'profile'])->name('employer-profile');
-Route::get('/employer/register', [EmployerController::class, 'index'])->name('employer-index');
-Route::get('/employer/delete/{id}', [EmployerController::class, 'delete'])->name('employer-delete');
-Route::post('/employer/update/{id}', [EmployerController::class, 'update'])->name('employer-update');
-//Employee Routes
-Route::get('/job', [JobController::class, 'index'])->name('job-index');
-Route::get('/job/list', [JobController::class, 'list'])->name('job-list');
-Route::get('/job/all', [JobController::class, 'getAllJobDetails']);
-Route::get('/job/delete/{id}', [JobController::class, 'delete'])->name('job-delete');
-Route::get('/job/verify/{id}', [JobController::class, 'verify'])->name('job-verify');
-Route::get('/job/edit/{id}', [JobController::class, 'edit'])->name('job-edit');
-Route::post('/job/save', [JobController::class, 'save'])->name('job-save');
-Route::post('/job/update/{id}', [JobController::class, 'update'])->name('job-update');
+Route::get('/app/job', [JobControllerApp::class, 'index'])->name('app-job-index');
+Route::get('/app/job/list', [JobControllerApp::class, 'list'])->name('app-job-list');
+Route::get('/app/job/application', [JobControllerApp::class, 'listJob']);
+Route::get('/app/job/all', [JobControllerApp::class, 'app-getAllJobDetails']);
+Route::get('/app/job/delete/{id}', [JobControllerApp::class, 'delete'])->name('app-job-delete');
+Route::get('/app/job/verify/{id}', [JobControllerApp::class, 'verify'])->name('app-job-verify');
+Route::get('/app/job/edit/{id}', [JobControllerApp::class, 'edit'])->name('app-job-edit');
+Route::post('/app/job/save', [JobControllerApp::class, 'save'])->name('app-job-save');
+Route::post('/app/job/update/{id}', [JobControllerApp::class, 'update'])->name('app-job-update');
 //Employee Routes
 Route::get('/application-details', [ApplicationController::class, 'index'])->name('application-index');
 Route::get('/application-details', [ApplicationController::class, 'edit'])->name('application-edit');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

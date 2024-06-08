@@ -25,6 +25,8 @@ class Job extends Model
         'job_description',
         'job_type',
         'job_hour',
+        'job_posted_by',
+        'job_requirements'
 
     ];
     public function category()

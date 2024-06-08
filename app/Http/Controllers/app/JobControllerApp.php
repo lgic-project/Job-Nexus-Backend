@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\app;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class JobControllerApp extends Controller
 {
     //
     public function index()
     {
-        // return view('admin.modules.jobs.createjob');
-        return view('admin.modules.jobs.newjob');
+        // return view('app.modules.jobs.createjob');
+        return view('app.modules.jobs.newjob');
     }
     public function save(Request $req)
     {
@@ -20,15 +20,19 @@ class JobController extends Controller
         $jobData->fill($req->all());
         $jobData->job_status = "Not Verified";
         $jobData->job_slug = $req->job_title;
-        $jobData->job_posted_by = 2;
-        // dd($jobData);
         $jobData->save();
-        return view('admin.modules.jobs.newjob');
+        return view('app.modules.jobs.newjob');
     }
     public function list()
     {
         $jobData = Job::all();
-        return view('admin.modules.jobs.listjob', compact('jobData'));
+        return view('app.modules.jobs.listjob', compact('jobData'));
+        // return response()->json($jobData);
+    }
+    public function listJob()
+    {
+        $jobData = Job::all();
+        return view('app.modules.applications.listjob', compact('jobData'));
         // return response()->json($jobData);
     }
 
@@ -37,7 +41,7 @@ class JobController extends Controller
         $jobDelete = Job::findorFail($id);
         $jobDelete->delete();
         $jobData = Job::all();
-        return view('admin.modules.job.listjob', compact('jobData'));
+        return view('app.modules.job.listjob', compact('jobData'));
     }
 
     public function verify($id)
@@ -55,7 +59,7 @@ class JobController extends Controller
     public function edit($id)
     {
         $jobData = Job::findorFail($id);
-        return view('admin.modules.jobs.editjob', compact('jobData'));
+        return view('app.modules.jobs.editjob', compact('jobData'));
     }
 
     public function update(Request $request, $id)
@@ -75,6 +79,7 @@ class JobController extends Controller
         $jobData->job_contact = request('job_contact');
         $jobData->job_validity = request('job_validity');
         $jobData->job_description = request('job_description');
+        $jobData->job_requirements = request('job_requirements');
         $jobData->save();
         return redirect()->route('job-list');
     }
