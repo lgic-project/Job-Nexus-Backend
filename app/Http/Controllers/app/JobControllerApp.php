@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\app;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,9 @@ class JobControllerApp extends Controller
     //
     public function index()
     {
-        // return view('app.modules.jobs.createjob');
-        return view('app.modules.jobs.newjob');
+        $categories = Category::all();
+        return view('app.modules.jobs.newjob', compact('categories'));
+        // return response()->json($categories);
     }
     public function save(Request $req)
     {
@@ -20,6 +22,9 @@ class JobControllerApp extends Controller
         $jobData->fill($req->all());
         $jobData->job_status = "Not Verified";
         $jobData->job_slug = $req->job_title;
+        $jobData->job_posted_by = "1";
+        $jobData->job_category = "1";
+        // dd($jobData);
         $jobData->save();
         return view('app.modules.jobs.newjob');
     }

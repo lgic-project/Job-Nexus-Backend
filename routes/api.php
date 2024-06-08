@@ -29,7 +29,7 @@ Route::get('/job-api', function () {
 });
 //routes for job
 Route::get('/jobs', [JobController::class, 'filterJobs']);
-Route::post('/job/save', [JobController::class, 'save']);
+Route::post('/job/save', [JobController::class, 'saveMobile']);
 Route::get('/job/all', [JobController::class, 'getAllJobDetails']);
 
 
@@ -46,4 +46,5 @@ Route::get('/category/{title}', [CategoryController::class, 'getJobsByCategory']
 //routes for wishlist
 Route::get('/wishlist/{id}', [WishlistController::class, 'showWishlist']);
 Route::get('/wishlist/{job_id}/{emp_id}', [WishlistController::class, 'deleteWishlist']);
-Route::get('/wishlist/save/{job_id}/{emp_id}', [WishlistController::class, 'saveWishlist']);
+Route::post('/wishlist/save/{job_id}/{emp_id}', [WishlistController::class, 'saveWishlist']);
+Route::get('/wishlist/view/{job_id}/{emp_id}', [WishlistController::class, 'isFavorite']);

@@ -58,4 +58,9 @@ class WishlistController extends Controller
 
         return response()->json($wishlistData);
     }
+    public function isFavorite($job_id, $emp_id)
+    {
+        $exists = Wishlist::where('job_id', $job_id)->where('employee_id', $emp_id)->exists();
+        return response()->json(['isFavorite' => $exists]);
+    }
 }

@@ -25,7 +25,12 @@
 
         <div class="col">
             <div data-mdb-input-init class="form-outline">
-                <input type="text" id="form6Example2" class="form-control" name="job_category" />
+                <select id="form6Example2" class="form-control" name="job_category">
+                    <option value="" disabled selected>Select Category</option>
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->category_title }}</option>
+                    @endforeach
+                </select>
                 <label class="form-label" for="form6Example2">Job Category</label>
             </div>
         </div>
@@ -123,3 +128,24 @@
     </div>
 </form>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selects = document.querySelectorAll('.form-outline select');
+
+        selects.forEach(select => {
+            // Add a class if an option is selected initially
+            if (select.value !== "") {
+                select.classList.add('active');
+            }
+            // Add class when user changes the select
+            select.addEventListener('change', function() {
+                if (select.value !== "") {
+                    select.classList.add('active');
+                } else {
+                    select.classList.remove('active');
+                }
+            });
+        });
+    });
+</script>

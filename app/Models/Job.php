@@ -31,7 +31,7 @@ class Job extends Model
     ];
     public function category()
     {
-        return $this->belongsTo(Category::class, 'id');
+        return $this->belongsTo(Category::class, 'job_category');
     }
 
     public function application()
