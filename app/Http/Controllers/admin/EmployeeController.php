@@ -122,15 +122,20 @@ class EmployeeController extends Controller
 
     public function checkEmployee($user_id)
     {
-        // Fetch the employee based on the provided user_id
         $employee = Employee::where('user_id', $user_id)->first();
-
         if ($employee) {
-            // Return the employee's data in JSON format if found
-            return response()->json($employee);
+            return response()->json(['exists' => true, 'data' => $employee]);
         } else {
-            // Return a message indicating the employee is not registered
-            return response()->json(['message' => 'Employee not registered'], 404);
+            return response()->json(['exists' => false]);
         }
+    }
+
+    public function profileMobile($user_id)
+
+    {
+        $employeeData = Employee::where('user_id', $user_id)->first();
+
+        // $employeeData = Employee::findorFail($id);
+        return response()->json($employeeData);
     }
 }
