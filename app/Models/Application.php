@@ -16,7 +16,6 @@ class Application extends Model
         'applicant_status',
         'applicant_description'
 
-
     ];
     public function job()
     {

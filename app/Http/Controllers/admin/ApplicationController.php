@@ -18,4 +18,14 @@ class ApplicationController extends Controller
     {
         return view('admin.modules.employee.editemployee');
     }
+
+    public function saveMobile(Request $req)
+    {
+
+        $userData = new Application();
+        $userData->fill($req->all());
+        $userData->applicant_status = "not verified";
+        $userData->save();
+        return response()->json($userData);
+    }
 }

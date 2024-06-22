@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\ApplicationController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\EmployeeController;
@@ -59,3 +60,6 @@ Route::get('/wishlist/view/{job_id}/{emp_id}', [WishlistController::class, 'isFa
 
 
 // Route::post('/register', [UserRegController::class, 'store']);
+
+//routes for application
+Route::post('/application/save', [ApplicationController::class, 'saveMobile']);
