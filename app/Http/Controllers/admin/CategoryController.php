@@ -15,6 +15,8 @@ class CategoryController extends Controller
         return response()->json($categoryData);
     }
 
+
+
     public function getJobsByCategory($title)
     {
         $category = Category::where('category_title', $title)->first();

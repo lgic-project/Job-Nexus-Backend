@@ -5,7 +5,9 @@ use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
 use App\Http\Controllers\admin\WishlistController;
+use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\app\JobControllerApp;
+use App\Http\Controllers\auth\UserRegController;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +52,6 @@ Route::get('/wishlist/{id}', [WishlistController::class, 'showWishlist']);
 Route::post('/wishlist/save/{job_id}/{emp_id}', [WishlistController::class, 'saveWishlist']);
 Route::get('/wishlist/{job_id}/{emp_id}', [WishlistController::class, 'deleteWishlist']);
 Route::get('/wishlist/view/{job_id}/{emp_id}', [WishlistController::class, 'isFavorite']);
+
+
+// Route::post('/register', [UserRegController::class, 'store']);

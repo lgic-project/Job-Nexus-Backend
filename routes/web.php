@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
 use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\app\JobControllerApp;
+use App\Http\Controllers\auth\UserRegController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
-        return view('admin.modules.index');
+        return view('admin.master');
     });
 
-    Route::get('/', function () {
+    Route::get('/admin', function () {
         return view('app.master');
+    });
+    Route::get('/', function () {
+        return view('auth.login');
     });
     //Employee Routes
     Route::get('/employee', [EmployeeController::class, 'list'])->name('employee-list');
@@ -74,7 +78,7 @@ Route::get('/application-details', [ApplicationController::class, 'edit'])->name
 
 //Category ROutes
 
-Route::get('/category/show', [CategoryController::class, 'show'])->name('category-show');
+Route::get('/category/show', [CategoryController::class, 'show'])->name('category-form');
 Route::post('/category/save', [CategoryController::class, 'save'])->name('category-save');
 
 
@@ -82,3 +86,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/category/data', [CategoryControllerApp::class, 'show'])->name('category-show');
+Route::post('/registerUser/add', [UserRegController::class, 'store'])->name('register');

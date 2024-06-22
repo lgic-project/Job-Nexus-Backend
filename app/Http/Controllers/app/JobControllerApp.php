@@ -28,7 +28,8 @@ class JobControllerApp extends Controller
         $jobData->job_category = "1";
         // dd($jobData);
         $jobData->save();
-        return view('app.modules.jobs.newjob');
+        $categories = Category::all();
+        return view('app.modules.jobs.newjob', compact('categories'));
     }
     public function list()
     {

@@ -20,6 +20,8 @@ class JobController extends Controller
     }
     public function save(Request $req)
     {
+        $categories = Category::all();
+
         $jobData = new Job();
         $jobData->fill($req->all());
         $jobData->job_status = "Not Verified";
@@ -27,7 +29,7 @@ class JobController extends Controller
         $jobData->job_posted_by = 2;
         // $jobData->job_category = 2;
         $jobData->save();
-        return view('admin.modules.jobs.newjob');
+        return view('admin.modules.jobs.newjob', compact('categories'));
     }
 
     public function saveMobile(Request $req)
