@@ -29,24 +29,35 @@ class UserRegController extends Controller
     }
 
 
-    public function storeMobile(Request $request)
+    // public function storeMobile(Request $request)
+    // {
+
+    //     return response()->json("succes");
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|email|unique:users|max:255',
+    //         'password' => 'required|string|min:8',
+    //         'contact' => 'required|string|max:15',
+    //     ]);
+
+    //     $usersData = new User();
+    //     $usersData->name = $request->input('name');
+    //     $usersData->role = $request->input('role');
+    //     $usersData->email = $request->input('email');
+    //     $usersData->password = $request->input('password');
+    //     $usersData->contact = $request->input('contact');
+    //     // $usersData->save();
+    //     return response()->json(['message' => 'User registered successfully', 'userData' => $userData]);
+    // }
+    public function saveMobile(Request $req)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|string|min:8',
-            'contact' => 'required|string|max:15',
-        ]);
-
-        $usersData = new User();
-        $usersData->name = $request->input('name');
-        $usersData->role = $request->input('role');
-        $usersData->email = $request->input('email');
-        $usersData->password = $request->input('password');
-        $usersData->contact = $request->input('contact');
-        $usersData->save();
-        return response()->json(['message' => 'User registered successfully', 'userData' => $userData]);
-
-        // return response()->json(['message' => 'User registered successfully', 'usersData' => $userData]);
+        // $jobData = new User();
+        // $jobData->fill($req->all());
+        // $jobData->save();
+        // return response()->json($jobData);
+        $userData = new User();
+        $userData->fill($req->all());
+        $userData->save();
+        return response()->json($userData);
     }
 }

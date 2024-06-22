@@ -87,3 +87,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/category/data', [CategoryControllerApp::class, 'show'])->name('category-show');
 Route::post('/registerUser/add', [UserRegController::class, 'store'])->name('register');
+Route::post('/registerUser/mobile', [UserRegController::class, 'storeMobile']);
+Route::post('/saveMobile', [UserRegController::class, 'saveMobile']);

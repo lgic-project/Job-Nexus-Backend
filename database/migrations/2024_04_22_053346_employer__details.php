@@ -16,9 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('employer_email');
             $table->string('employer_password');
-            $table->string('employer_first_name');
-            $table->string('employer_middle_name')->nullable();
-            $table->string('employer_last_name');
+            $table->string('employer_name');
             $table->string('employer_address');
             $table->string('employer_slug');
             $table->string('employer_status');
@@ -26,7 +24,9 @@ return new class extends Migration
             $table->string('employer_company_name');
             $table->longText('employer_image');
             $table->longText('employer_description');
+            $table->string('user_id');
             $table->longText('employer_certificate');
+
             $table->timestamps();
         });
     }

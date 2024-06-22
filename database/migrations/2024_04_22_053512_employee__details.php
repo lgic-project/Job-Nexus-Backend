@@ -16,15 +16,14 @@ return new class extends Migration
             $table->id();
             $table->string('employee_email');
             $table->string('employee_password');
-            $table->string('employee_first_name');
-            $table->string('employee_middle_name')->nullable();
-            $table->string('employee_last_name');
+            $table->string('employee_name');
             $table->string('employee_address');
             $table->string('employee_slug');
             $table->string('employee_status');
             $table->string('employee_contact');
             $table->longText('employee_image');
             $table->longText('employee_description');
+            $table->string('user_id');
             $table->longText('employee_cv');
             $table->timestamps();
         });

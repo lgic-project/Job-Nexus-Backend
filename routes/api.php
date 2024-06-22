@@ -33,6 +33,7 @@ Route::get('/job-api', function () {
 //routes for job
 Route::get('/jobs', [JobController::class, 'filterJobs']);
 Route::post('/job/save', [JobController::class, 'saveMobile']);
+Route::post('/user/save', [UserRegController::class, 'saveMobile']);
 Route::get('/job/all', [JobController::class, 'getAllJobDetails']);
 Route::get('/job/detail/{id}', [JobControllerApp::class, 'detail']);
 
@@ -42,6 +43,8 @@ Route::post('/employer/store', [EmployerController::class, 'store']);
 
 //routes for employee
 Route::post('/employee/store', [EmployeeController::class, 'store']);
+Route::get('/checkEmployee/{user_id}', [EmployeeController::class, 'checkEmployee']);
+
 
 //route for category
 Route::get('/category', [CategoryController::class, 'index']);

@@ -118,4 +118,19 @@ class EmployeeController extends Controller
         $employeeData->save();
         return redirect()->route('employee-list');
     }
+
+
+    public function checkEmployee($user_id)
+    {
+        // Fetch the employee based on the provided user_id
+        $employee = Employee::where('user_id', $user_id)->first();
+
+        if ($employee) {
+            // Return the employee's data in JSON format if found
+            return response()->json($employee);
+        } else {
+            // Return a message indicating the employee is not registered
+            return response()->json(['message' => 'Employee not registered'], 404);
+        }
+    }
 }

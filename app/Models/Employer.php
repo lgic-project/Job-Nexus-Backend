@@ -13,9 +13,7 @@ class Employer extends Model
     protected $fillable = [
         'employer_email',
         'employer_password',
-        'employer_first_name',
-        'employer_middle_name',
-        'employer_last_name',
+        'employer_name',
         'employer_address',
         'employer_slug',
         'employer_status',
@@ -23,7 +21,8 @@ class Employer extends Model
         'employer_company_name',
         'employer_image',
         'employer_description',
-        'employer_certificate'
+        'employer_certificate',
+        'user_id'
     ];
 
     public function job()

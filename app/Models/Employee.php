@@ -13,15 +13,14 @@ class Employee extends Model
     protected $fillable = [
         'employee_email',
         'employee_password',
-        'employee_first_name',
-        'employee_middle_name',
-        'employee_last_name',
+        'employee_name',
         'employee_address',
         'employee_slug',
         'employee_status',
         'employee_contact',
         'employee_image',
         'employee_description',
-        'employee_cV'
+        'employee_cV',
+        'user_id'
     ];
 }
