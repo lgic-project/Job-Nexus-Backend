@@ -44,6 +44,7 @@ Route::post('/employer/store', [EmployerController::class, 'store']);
 
 //routes for employee
 Route::post('/employee/store', [EmployeeController::class, 'store']);
+Route::post('/login/user', [UserRegController::class, 'loginMobile']);
 Route::get('/checkEmployee/{user_id}', [EmployeeController::class, 'checkEmployee']);
 Route::get('/employee/{user_id}', [EmployeeController::class, 'profileMobile']);
 

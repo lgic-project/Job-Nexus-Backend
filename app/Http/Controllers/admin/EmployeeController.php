@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
-
+use App\Models\User;
 
 class EmployeeController extends Controller
 {
@@ -23,14 +23,15 @@ class EmployeeController extends Controller
 
     public function list()
     {
-        $employeeData = Employee::all();
+        $employeeData = Employee::with('user')->get();
         return view('admin.modules.employee.listemployee', compact('employeeData'));
     }
 
 
+
     public function index()
     {
-        return view('admin.modules.employee.addemployee');
+        return view('admin.modules.employee.registeremployee');
     }
 
     public function save(Request $req)
@@ -46,10 +47,12 @@ class EmployeeController extends Controller
         $newThumbnailImageName2 = time() . '.' . $req->file('employee_cv')->getClientOriginalName();
         $req->employee_cv->move(public_path('images/employee/cv'), $newThumbnailImageName2);
         $employeeData->employee_cv = $newThumbnailImageName2;
-        $employeeData->employee_slug = $employeeData->employee_first_name;
+        $employeeData->employee_slug = $req->employee_address;
         $employeeData->employee_status = "Inactive";
+        // dd($employeeData);
         $employeeData->save();
-        return view('admin.modules.employee.addemployee');
+        $employeeData = Employee::with('user')->get();
+        return view('admin.modules.employee.listemployee', compact('employeeData'));
     }
 
     //Verification
@@ -74,11 +77,15 @@ class EmployeeController extends Controller
         return view('admin.modules.employee.listemployee', compact('employeeData'));
     }
 
-    public function profile($id)
+    public function profile($user_id)
     {
-        $employeeData = Employee::findorFail($id);
+        // Retrieve the employee data along with associated user data
+        $employeeData = Employee::with('user')->where('user_id', $user_id)->firstOrFail();
+
+        // Pass the data to the view
         return view('admin.modules.employee.employeeprofile', compact('employeeData'));
     }
+
 
     public function edit($id)
     {
@@ -90,17 +97,22 @@ class EmployeeController extends Controller
 
     public function update(Request $request, $id)
     {
-        $employeeData = Employee::find($id);
-        $employeeData->employee_first_name = request('employee_first_name');
-        $employeeData->employee_middle_name = request('employee_middle_name');
-        $employeeData->employee_last_name = request('employee_last_name');
-        $employeeData->employee_email = request('employee_email');
-        $employeeData->employee_password = request('employee_password');
-        $employeeData->employee_address = request('employee_address');
-        $employeeData->employee_contact = request('employee_contact');
-        $employeeData->employee_description = request('employee_description');
-        $employeeData->employee_slug = request('employee_first_name');
-        $employeeData->employee_status = $employeeData->employee_status;
+        // Retrieve the employee record
+        $employeeData = Employee::findOrFail($id);
+
+
+        // Update basic information
+
+        $employeeData->employee_address = $request->input('employee_address');
+        $employeeData->employee_description = $request->input('employee_description');
+        $employeeData->employee_slug = $request->input('name');
+
+        // Conditionally update password
+        if ($request->filled('employee_password')) {
+            $employeeData->employee_password = bcrypt($request->input('employee_password'));
+        }
+
+        // Handle profile picture upload
         if ($request->hasFile("employee_image")) {
             $newemployeeImageName = time() . '-' . $request->employee_first_name . '.' . $request->employee_image->extension();
             $request->employee_image->move(public_path('images/employee/profile/'), $newemployeeImageName);
@@ -115,14 +127,26 @@ class EmployeeController extends Controller
         } else {
             $employeeData->employee_cv =  $employeeData->employee_cv;
         }
+        // Update additional fields
+        $employeeData->employee_education = $request->input('employee_education');
+        $employeeData->employee_work_experience = $request->input('employee_work_experience');
+        $employeeData->employee_participation = $request->input('employee_participation');
+        $employeeData->employee_training = $request->input('employee_training');
+
+        // Save changes
         $employeeData->save();
-        return redirect()->route('employee-list');
+
+        // Redirect to employee list with success message
+        return redirect()->route('employee-list')->with('success', 'Employee updated successfully.');
     }
+
 
 
     public function checkEmployee($user_id)
     {
-        $employee = Employee::where('user_id', $user_id)->first();
+        // $employee = Employee::where('user_id', $user_id)->first();
+        $employee = Employee::with('user')->where('user_id', $user_id)->firstOrFail();
+
         if ($employee) {
             return response()->json(['exists' => true, 'data' => $employee]);
         } else {
@@ -133,9 +157,23 @@ class EmployeeController extends Controller
     public function profileMobile($user_id)
 
     {
-        $employeeData = Employee::where('user_id', $user_id)->first();
+        $employeeData = Employee::with('user')->where('user_id', $user_id)->firstOrFail();
 
         // $employeeData = Employee::findorFail($id);
         return response()->json($employeeData);
+    }
+
+
+    public function employeeRegistration(Request $req)
+    {
+
+        $userData = new User();
+        $userData->fill($req->all());
+        $userData->role = "admin";
+        $userData->save();
+        // return response()->json($userData);
+        $userId = $userData->id;
+        // Redirect to the view and pass the user ID
+        return view('admin.modules.employee.addemployee', compact('userId'));
     }
 }

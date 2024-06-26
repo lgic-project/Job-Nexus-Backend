@@ -14,17 +14,19 @@ return new class extends Migration
         //
         Schema::create('employee_details', function (Blueprint $table) {
             $table->id();
-            $table->string('employee_email');
-            $table->string('employee_password');
-            $table->string('employee_name');
+            $table->string('user_id');
             $table->string('employee_address');
             $table->string('employee_slug');
             $table->string('employee_status');
-            $table->string('employee_contact');
             $table->longText('employee_image');
+            $table->longText('employee_cv')->nullable();
             $table->longText('employee_description');
-            $table->string('user_id');
-            $table->longText('employee_cv');
+            $table->longText('employee_education')->nullable();
+            $table->longText('employee_work_experience')->nullable();
+            $table->longText('employee_participation')->nullable();
+            $table->longText('employee_training')->nullable();
+            $table->string('employee_fb_link')->nullable();
+            $table->string('employee_linkedin_link')->nullable();
             $table->timestamps();
         });
     }

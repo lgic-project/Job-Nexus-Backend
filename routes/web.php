@@ -36,10 +36,11 @@ Route::group(['middleware' => 'auth'], function () {
     //Employee Routes
     Route::get('/employee', [EmployeeController::class, 'list'])->name('employee-list');
     Route::post('/employee/save', [EmployeeController::class, 'save'])->name('employee-save');
+    Route::post('/employee/register', [EmployeeController::class, 'employeeRegistration'])->name('register-employee');
     Route::get('/employee/register', [EmployeeController::class, 'index'])->name('employee-index');
     Route::get('/employee/verification/{id}', [EmployeeController::class, 'verify'])->name('employee-verify');
     Route::get('/employee/delete/{id}', [EmployeeController::class, 'delete'])->name('employee-delete');
-    Route::get('/employee/profile/{id}', [EmployeeController::class, 'profile'])->name('employee-profile');
+    Route::get('/employee/profile/{user_id}', [EmployeeController::class, 'profile'])->name('employee-profile');
     Route::get('/employee/edit/{id}', [EmployeeController::class, 'edit'])->name('employee-edit');
     Route::post('/employee/update/{id}', [EmployeeController::class, 'update'])->name('employee-update');
     //Employer Routes
@@ -86,6 +87,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/category/data', [CategoryControllerApp::class, 'show'])->name('category-show');
-Route::post('/registerUser/add', [UserRegController::class, 'store'])->name('register');
+Route::post('/registerUser/add', [UserRegController::class, 'store'])->name('user-register');
 Route::post('/registerUser/mobile', [UserRegController::class, 'storeMobile']);
 Route::post('/saveMobile', [UserRegController::class, 'saveMobile']);
