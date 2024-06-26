@@ -41,7 +41,7 @@
         <!-- Email -->
         <div class="col">
             <div class="form-outline">
-                <input type="email" id="formEmail" class="form-control" name="employee_email" value="{{$employeeData->user->email}}" />
+                <input type="email" id="formEmail" class="form-control" name="email" value="{{$employeeData->user->email}}" />
                 <label class="form-label" for="formEmail">Email</label>
             </div>
         </div>
@@ -54,7 +54,7 @@
     <div class="row mb-4">
         <div class="col">
             <div class="form-outline">
-                <input type="text" id="formContact" class="form-control" name="employee_contact" value="{{$employeeData->user->contact}}" />
+                <input type="text" id="formContact" class="form-control" name="contact" value="{{$employeeData->user->contact}}" />
                 <label class="form-label" for="formContact">Contact</label>
             </div>
         </div>

@@ -19,12 +19,12 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="{{ asset('images/employer/profile/' . $employerData->employer_image) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <img src="{{ asset('images/employer/profile/' . $employerData->employer_image) }}" alt="Profile Picture" class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3">{{$employerData->employer_first_name}}</h5>
                         <p class="text-muted mb-4">{{$employerData->employer_address}}</p>
                         <div class="d-flex justify-content-center mb-2">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#resumeModal">
-                                View Resume
+                                View Certificate
                             </button>
                             <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -42,9 +42,11 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                            <a href="/employer/verification/{{$employerData->id}}"> <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">{{$employerData->employer_status}}</button></a>
+                            <a href="/employer/verification/{{$employerData->id}}">
+                                <button type="button" class="btn btn-outline-primary ms-1">
+                                    {{$employerData->employer_status}}
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -53,24 +55,24 @@
                         <ul class="list-group list-group-flush rounded-3">
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fas fa-globe fa-lg text-warning"></i>
-                                <p class="mb-0">https://mdbootstrap.com</p>
-                            </li>
+                                <p class="mb-0">{{$employerData->company_website}}</p>
+                                <!-- </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                <p class="mb-0">mdbootstrap</p>
+                                <p class="mb-0">{{$employerData->github ?? 'N/A'}}</p>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                <p class="mb-0">@mdbootstrap</p>
+                                <p class="mb-0">{{$employerData->twitter ?? 'N/A'}}</p>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                <p class="mb-0">mdbootstrap</p>
+                                <p class="mb-0">{{$employerData->instagram ?? 'N/A'}}</p>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
+                                <p class="mb-0">{{$employerData->facebook ?? 'N/A'}}</p>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -83,7 +85,7 @@
                                 <p class="mb-0">Full Name</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{$employerData->employer_first_name . " " . $employerData->employer_middle_name . " " . $employerData->employer_last_name}}</p>
+                                <p class="text-muted mb-0">{{$employerData->user->name}}</p>
                             </div>
                         </div>
                         <hr>
@@ -92,7 +94,7 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{$employerData->employer_email}}</p>
+                                <p class="text-muted mb-0">{{$employerData->user->email}}</p>
                             </div>
                         </div>
                         <hr>
@@ -101,7 +103,16 @@
                                 <p class="mb-0">Phone</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{$employerData->employer_contact}}</p>
+                                <p class="text-muted mb-0">{{$employerData->user->contact}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">PAN/VAT:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{$employerData->employer_pan_vat}}</p>
                             </div>
                         </div>
                         <hr>
@@ -127,12 +138,7 @@
                 <div class="row">
                     <h4 style="text-align: center; margin-bottom:2rem;">Employer Description</h4>
                     <div class="card-body col-md-12" style="text-align:justify">
-                        <h5>{{$employerData->employer_description}}</h5>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit repellat voluptas nobis saepe recusandae soluta nesciunt assumenda veritatis nihil consequatur error harum laborum necessitatibus, odio voluptatem dolor modi rerum nulla!
-                        Voluptatem commodi ipsa quidem maiores cum reprehenderit eveniet hic cumque officia deserunt itaque delectus, culpa eaque et explicabo, exercitationem accusantium labore ipsum blanditiis reiciendis architecto quo cupiditate aspernatur. Ipsum, aliquam!
-                        Cupiditate rem officiis, illo harum quasi quas minus provident nostrum porro asperiores est fuga dolorem aperiam maxime consequuntur accusamus consequatur dolorum sed facere neque voluptas ullam. Sit aspernatur magni aperiam?
-                        Delectus in repudiandae, facilis laudantium culpa ut saepe quas. Architecto ex molestiae omnis, sunt, iusto reiciendis quas, autem at quo veniam ducimus libero amet rerum sint cum esse officiis doloribus?
-                        Obcaecati, voluptatem! Architecto eligendi ullam repellendus facilis vitae eos alias dolores ex eum, voluptas quibusdam nisi sint suscipit, nam qui ipsam ea earum ducimus fugiat cumque consequuntur reprehenderit quasi odio.
+                        <p>{{$employerData->employer_description}}</p>
                     </div>
                 </div>
             </div>

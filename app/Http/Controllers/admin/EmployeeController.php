@@ -24,6 +24,7 @@ class EmployeeController extends Controller
     public function list()
     {
         $employeeData = Employee::with('user')->get();
+        // dd($employeeData);
         return view('admin.modules.employee.listemployee', compact('employeeData'));
     }
 
@@ -51,8 +52,9 @@ class EmployeeController extends Controller
         $employeeData->employee_status = "Inactive";
         // dd($employeeData);
         $employeeData->save();
-        $employeeData = Employee::with('user')->get();
-        return view('admin.modules.employee.listemployee', compact('employeeData'));
+        // $employeeData = Employee::with('user')->get();
+        // return view('admin.modules.employee.listemployee', compact('employeeData'));
+        return redirect()->route('employee-list')->with('success', 'Employee updated successfully.');
     }
 
     //Verification
@@ -99,6 +101,14 @@ class EmployeeController extends Controller
     {
         // Retrieve the employee record
         $employeeData = Employee::findOrFail($id);
+        $userData = User::findOrFail($employeeData->user_id);
+
+        // Update basic information
+        $userData->name = $request->input('name');
+        $userData->email = $request->input('email');
+        $userData->contact = $request->input('contact');
+        $userData->password = $userData->password;
+
 
 
         // Update basic information
@@ -134,6 +144,7 @@ class EmployeeController extends Controller
         $employeeData->employee_training = $request->input('employee_training');
 
         // Save changes
+        $userData->save();
         $employeeData->save();
 
         // Redirect to employee list with success message
@@ -169,7 +180,7 @@ class EmployeeController extends Controller
 
         $userData = new User();
         $userData->fill($req->all());
-        $userData->role = "admin";
+        $userData->role = "user";
         $userData->save();
         // return response()->json($userData);
         $userId = $userData->id;

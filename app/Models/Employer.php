@@ -11,22 +11,27 @@ class Employer extends Model
     protected $table = 'employer_details';
 
     protected $fillable = [
-        'employer_email',
-        'employer_password',
-        'employer_name',
+
         'employer_address',
         'employer_slug',
         'employer_status',
-        'employer_contact',
         'employer_company_name',
+        'employer_pan_vat',
+        'employer_certificate',
         'employer_image',
         'employer_description',
         'employer_certificate',
+        'company_website',
         'user_id'
     ];
 
     public function job()
     {
         return $this->hasMany(Job::class, 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

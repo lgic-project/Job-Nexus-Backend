@@ -49,8 +49,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/employer/save', [EmployerController::class, 'save'])->name('employer-save');
     Route::post('/employer/store', [EmployerController::class, 'store'])->name('employer-store');
     Route::get('/employer/verification/{id}', [EmployerController::class, 'verify'])->name('employer-verification');
-    Route::get('/employer/profile/{id}', [EmployerController::class, 'profile'])->name('employer-profile');
+    Route::get('/employer/profile/{user_id}', [EmployerController::class, 'profile'])->name('employer-profile');
     Route::get('/employer/register', [EmployerController::class, 'index'])->name('employer-index');
+    Route::post('/employer/register', [EmployerController::class, 'employerRegistration'])->name('register-employer');
     Route::get('/employer/delete/{id}', [EmployerController::class, 'delete'])->name('employer-delete');
     Route::post('/employer/update/{id}', [EmployerController::class, 'update'])->name('employer-update');
     //Employee Routes
