@@ -30,9 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', function () {
         return view('app.master');
     });
-    // Route::get('/', function () {
-    //     return view('auth.login');
-    // });
+    Route::get('/', function () {
+        return redirect('/login');
+    });
     //Employee Routes
     Route::get('/employee', [EmployeeController::class, 'list'])->name('employee-list');
     Route::post('/employee/save', [EmployeeController::class, 'save'])->name('employee-save');
@@ -100,3 +100,5 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dash
 Route::get('/completeprofile', [App\Http\Controllers\DashboardController::class, 'completeProfile'])->name('complete.profile');
 Route::post('/completeprofile/create', [App\Http\Controllers\DashboardController::class, 'createProfile'])->name('profile.store');
 Route::get('/pending-page', [App\Http\Controllers\DashboardController::class, 'verifyPending'])->name('profile.verify`');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
