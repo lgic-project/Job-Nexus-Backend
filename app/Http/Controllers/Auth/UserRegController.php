@@ -25,7 +25,7 @@ class UserRegController extends Controller
         $userData->password = $request->input('password');
         $userData->contact = $request->input('contact');
         $userData->save();
-        return view('login');
+        return view('auth.login');
     }
 
 

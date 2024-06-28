@@ -30,9 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', function () {
         return view('app.master');
     });
-    Route::get('/', function () {
-        return view('auth.login');
-    });
+    // Route::get('/', function () {
+    //     return view('auth.login');
+    // });
     //Employee Routes
     Route::get('/employee', [EmployeeController::class, 'list'])->name('employee-list');
     Route::post('/employee/save', [EmployeeController::class, 'save'])->name('employee-save');
@@ -91,3 +91,12 @@ Route::get('/category/data', [CategoryControllerApp::class, 'show'])->name('cate
 Route::post('/registerUser/add', [UserRegController::class, 'store'])->name('user-register');
 Route::post('/registerUser/mobile', [UserRegController::class, 'storeMobile']);
 Route::post('/saveMobile', [UserRegController::class, 'saveMobile']);
+
+
+
+// dashboard routes
+
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/completeprofile', [App\Http\Controllers\DashboardController::class, 'completeProfile'])->name('complete.profile');
+Route::post('/completeprofile/create', [App\Http\Controllers\DashboardController::class, 'createProfile'])->name('profile.store');
+Route::get('/pending-page', [App\Http\Controllers\DashboardController::class, 'verifyPending'])->name('profile.verify`');
