@@ -112,6 +112,11 @@
         <input type="textarea" id="form6Example4" class="form-control" name="job_description" value="{{$jobData->job_description}}" />
     </div>
 
+    <div class="mb-3">
+        <label class="form-label-title">Job Requirements</label>
+        <input type="textarea" id="form6Example4" class="form-control" name="job_requirements" value="{{$jobData->job_requirements}}" />
+    </div>
+
     <!-- Submit button -->
     <div class="row mb-4">
         <div class="col-md-4"></div>

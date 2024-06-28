@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', function () {
+    Route::get('/dashboard/super', function () {
         return view('admin.master');
     });
 

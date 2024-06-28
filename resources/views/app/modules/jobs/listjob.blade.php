@@ -2,13 +2,12 @@
 
 @section('content')
 <table class="table align-middle mb-0 bg-white">
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-
             <h3 style="text-align: center;">Posted Jobs</h3>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 text-end">
             <a href="/job"><button class="btn btn-success"><i class="fa-solid fa-plus"></i> Create New</button></a>
         </div>
     </div>
@@ -22,128 +21,129 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($jobData as $jobData)
+        @foreach($jobData as $job)
         <tr>
             <td>
                 <div class="d-flex align-items-center">
                     <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                     <div class="ms-3">
-                        <p class="fw-bold mb-1">{{$jobData->job_title}}</p>
-                        <p class="text-muted mb-0">{{$jobData->job_type}}</p>
+                        <p class="fw-bold mb-1">{{ $job->job_title }}</p>
+                        <p class="text-muted mb-0">{{ $job->job_type }}</p>
                     </div>
                 </div>
             </td>
             <td>
-                <p class="fw-normal mb-1">{{$jobData->job_address}}</p>
-                <p class="text-muted mb-0">{{$jobData->job_contact}}</p>
+                <p class="fw-normal mb-1">{{ $job->job_address }}</p>
+                <p class="text-muted mb-0">{{ $job->job_contact }}</p>
             </td>
-
             <td>
-                <p class="fw-normal mb-1">{{$jobData->job_category}}</p>
+                <p class="fw-normal mb-1">{{ $job->job_category }}</p>
             </td>
-            @if($jobData->job_status == 'Not Verified')
-            <?php $color = 'danger'; ?>
-
-            @else
-            <?php $color = 'success'; ?>
-            @endif
             <td>
-                <a href="/job/verify/{{$jobData->id}}" onclick="return confirmStatusChange('change status')">
-                    <span class="badge badge-{{$color}} rounded-pill d-inline">{{$jobData->job_status}}</span>
+                <?php $color = $job->job_status == 'Not Verified' ? 'danger' : 'success'; ?>
+                <a href="#" onclick="return confirmStatusChangeApp('change status')">
+                    <span class="badge bg-{{ $color }} rounded-pill d-inline">{{ $job->job_status }}</span>
                 </a>
             </td>
-
             <script>
-                function confirmStatusChange(a) {
-                    return confirm("Are you sure you want to" + " " + a + "?");
+                function confirmStatusChangeApp(a) {
+                    return alert("Only Super Admin can modify this status");
                 }
             </script>
-
-
             <td>
-                <a href="/job/edit/{{$jobData->id}}">
-                    <button type="button" class="btn btn-primary btn-sm btn-rounded mx-2 px-2 ">
+                <a href="/app/job/edit/{{ $job->id }}">
+                    <button type="button" class="btn btn-primary btn-sm btn-rounded mx-2 px-2">
                         Edit
                     </button>
                 </a>
-                <a href="/job/delete/{{$jobData->id}}">
-
+                <a href="/job/delete/{{ $job->id }}">
                     <button type="button" class="btn btn-danger btn-sm btn-rounded mx-2 px-2" onclick="return confirmStatusChange('delete')">
                         Delete
                     </button>
                 </a>
-
-
-                <button type="button" class="btn btn-warning btn-sm btn-rounded mx-2 px-2" data-bs-toggle="modal" data-bs-target="#resumeModal">
+                <button type="button" class="btn btn-warning btn-sm btn-rounded mx-2 px-2" data-bs-toggle="modal" data-bs-target="#resumeModal{{ $job->id }}">
                     Details
                 </button>
 
-                <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Modal -->
+                <div class="modal fade" id="resumeModal{{ $job->id }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ $job->id }}" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Job Details</h5>
+                                <h5 class="modal-title" id="exampleModalLabel{{ $job->id }}">Job Details</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="container">
-
                                     <table class="table">
                                         <tbody>
                                             <tr>
                                                 <th>Title</th>
-                                                <td>{{ $jobData->job_title }}</td>
+                                                <td>{{ $job->job_title }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Category</th>
-                                                <td>{{ $jobData->job_category }}</td>
+                                                <td>{{ $job->job_category }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Address</th>
-                                                <td>{{ $jobData->job_address }}</td>
+                                                <td>{{ $job->job_address }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Company Name</th>
-                                                <td>{{ $jobData->job_company_name }}</td>
+                                                <td>{{ $job->job_company_name }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Experience</th>
-                                                <td>{{ $jobData->job_experience }}</td>
+                                                <td>{{ $job->job_experience }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Salary</th>
-                                                <td>{{ $jobData->job_min_salary }} - {{ $jobData->job_max_salary }}</td>
+                                                <td>{{ $job->job_min_salary }} - {{ $job->job_max_salary }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Slug</th>
-                                                <td>{{ $jobData->job_slug }}</td>
+                                                <td>{{ $job->job_slug }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Status</th>
-                                                <td>{{ $jobData->job_status }}</td>
+                                                <td>{{ $job->job_status }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Contact</th>
-                                                <td>{{ $jobData->job_contact }}</td>
+                                                <td>{{ $job->job_contact }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Validity</th>
-                                                <td>{{ $jobData->job_validity }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Description</th>
-                                                <td>{{ $jobData->job_description }}</td>
+                                                <td>{{ $job->job_validity }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Type</th>
-                                                <td>{{ $jobData->job_type }}</td>
+                                                <td>{{ $job->job_type }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Hour</th>
-                                                <td>{{ $jobData->job_hour }}</td>
+                                                <td>{{ $job->job_hour }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
+
+                                    <!-- Accordion for Description -->
+                                    <div class="accordion" id="jobDescriptionAccordion{{ $job->id }}">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne{{ $job->id }}">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne{{ $job->id }}" aria-expanded="false" aria-controls="collapseOne{{ $job->id }}">
+                                                    Job Description
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne{{ $job->id }}" class="accordion-collapse collapse" aria-labelledby="headingOne{{ $job->id }}" data-bs-parent="#jobDescriptionAccordion{{ $job->id }}">
+                                                <div class="accordion-body overflow-auto">
+                                                    {{ $job->job_description }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -152,10 +152,23 @@
                         </div>
                     </div>
                 </div>
-
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+
+<!-- Add custom CSS for word wrap and overflow -->
+<style>
+    .accordion-body {
+        white-space: pre-wrap;
+        /* Preserve white space and wrap long text */
+        word-wrap: break-word;
+        /* Break words if they are too long */
+        overflow-wrap: break-word;
+        /* Handle word breaking */
+        max-height: 300px;
+        /* Set a max height for the description */
+    }
+</style>
 @endsection

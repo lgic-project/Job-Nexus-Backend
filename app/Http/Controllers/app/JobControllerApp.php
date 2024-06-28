@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use auth;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -24,7 +25,7 @@ class JobControllerApp extends Controller
         $jobData->fill($req->all());
         $jobData->job_status = "Not Verified";
         $jobData->job_slug = $req->job_title;
-        $jobData->job_posted_by = "1";
+        $jobData->job_posted_by = Auth::user()->id;
         $jobData->job_category = "1";
         // dd($jobData);
         $jobData->save();
@@ -33,10 +34,12 @@ class JobControllerApp extends Controller
     }
     public function list()
     {
-        $jobData = Job::all();
+        $userID = Auth::id(); // Alternatively, Auth::user()->id;
+        $jobData = Job::where('job_posted_by', $userID)->get(); // Fetch the data
+
         return view('app.modules.jobs.listjob', compact('jobData'));
-        // return response()->json($jobData);
     }
+
     public function listJob()
     {
         $jobData = Job::all();
@@ -61,7 +64,7 @@ class JobControllerApp extends Controller
 
             $record->job_status = 'verified';
         $record->save();
-        return redirect()->route('job-list');
+        return redirect()->route('app-job-list');
     }
 
     public function edit($id)
@@ -89,7 +92,7 @@ class JobControllerApp extends Controller
         $jobData->job_description = request('job_description');
         $jobData->job_requirements = request('job_requirements');
         $jobData->save();
-        return redirect()->route('job-list');
+        return redirect()->route('app-job-list');
     }
 
     public function filterJobs(Request $request)
