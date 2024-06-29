@@ -32,4 +32,14 @@ class Employee extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function setEmployeeImageAttribute($value)
+    {
+        if (is_file($value)) {
+            $path = $value->store('employee_images', 'public');
+            $this->attributes['employee_image'] = $path;
+        } else {
+            $this->attributes['employee_image'] = $value;
+        }
+    }
 }

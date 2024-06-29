@@ -18,6 +18,7 @@
             <th>Category</th>
             <th>Status</th>
             <th>Actions</th>
+            <th>Applications</th>
         </tr>
     </thead>
     <tbody>
@@ -152,6 +153,12 @@
                         </div>
                     </div>
                 </div>
+            </td>
+            <td>
+                <a href="/app/job/application/{{ $job->id }}">
+                    <button type="button" class="btn btn-success btn-sm btn-rounded mx-2 px-2">
+                        Application
+                    </button>
             </td>
         </tr>
         @endforeach

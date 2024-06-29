@@ -64,3 +64,7 @@ Route::get('/wishlist/view/{job_id}/{emp_id}', [WishlistController::class, 'isFa
 
 //routes for application
 Route::post('/application/save', [ApplicationController::class, 'saveMobile']);
+Route::get('/application/{user_id}', [ApplicationController::class, 'viewApplication']);
+
+
+Route::post('/employee/complete-profile', [EmployeeController::class, 'Mobilestore']);

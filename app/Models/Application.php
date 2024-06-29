@@ -11,14 +11,21 @@ class Application extends Model
     protected $table = 'application';
 
     protected $fillable = [
-        'applicant_id',
+        'user_id',
         'job_id',
         'applicant_status',
         'applicant_description'
 
     ];
+
+
     public function job()
     {
-        return $this->belongsTo(Job::class, 'id');
+        return $this->belongsTo(Job::class, 'job_id');
+    }
+
+    public function applicant()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

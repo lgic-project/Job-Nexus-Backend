@@ -187,4 +187,15 @@ class EmployeeController extends Controller
         // Redirect to the view and pass the user ID
         return view('admin.modules.employee.addemployee', compact('userId'));
     }
+
+    public function Mobilestore(Request $request)
+    {
+        $employeeData = new Employee();
+        $employeeData->fill($request->all());
+        // $employeeData->employee_image = "asfkj";
+
+
+        $employeeData->save();
+        return response()->json($employeeData, 201);
+    }
 }

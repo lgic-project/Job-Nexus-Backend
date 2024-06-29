@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\admin\ApplicationController;
 use App\Http\Controllers\admin\CategoryController;
-use App\Http\Controllers\app\ApplicationControllerApp;
 use App\Http\Controllers\app\CategoryControllerApp;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
@@ -54,6 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/employer/register', [EmployerController::class, 'employerRegistration'])->name('register-employer');
     Route::get('/employer/delete/{id}', [EmployerController::class, 'delete'])->name('employer-delete');
     Route::post('/employer/update/{id}', [EmployerController::class, 'update'])->name('employer-update');
+    Route::get('/app/employer/profile', [EmployerController::class, 'appEmployerProfile'])->name('app-employer-profile');
+    Route::get('/app/employer/edit', [EmployerController::class, 'appEditEmployerProfile'])->name('app-edit-employer-profile');
+    Route::post('/employerUpdate', [EmployerController::class, 'Employerupdate'])->name('Employerupdate');
     //Employee Routes
     Route::get('/job', [JobController::class, 'index'])->name('job-index');
     Route::get('/job/list', [JobController::class, 'list'])->name('job-list');
@@ -65,6 +67,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/job/update/{id}', [JobController::class, 'update'])->name('job-update');
     //route for app
 });
+
+
+//App Job Ro
 Route::get('/app/job', [JobControllerApp::class, 'index'])->name('app-job-index');
 Route::get('/app/job/list', [JobControllerApp::class, 'list'])->name('app-job-list');
 Route::get('/app/job/application', [JobControllerApp::class, 'listJob']);
@@ -77,7 +82,10 @@ Route::post('/app/job/update/{id}', [JobControllerApp::class, 'update'])->name('
 //Employee Routes
 Route::get('/application-details', [ApplicationController::class, 'index'])->name('application-index');
 Route::get('/application-details', [ApplicationController::class, 'edit'])->name('application-edit');
-
+Route::get('/app/job/application/{job}', [ApplicationController::class, 'jobApplications'])->name('job-application');
+Route::get('/app/job/application/cv/{user_id}', [ApplicationController::class, 'viewCV'])->name('view-cv');
+Route::get('/job-applications/{id}/accept', [ApplicationController::class, 'acceptApplication'])->name('job-applications.accept');
+Route::get('/job-applications/{id}/reject', [ApplicationController::class, 'rejectApplication'])->name('job-applications.reject');
 //Category ROutes
 
 Route::get('/category/show', [CategoryController::class, 'show'])->name('category-form');

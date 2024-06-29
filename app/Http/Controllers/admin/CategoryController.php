@@ -32,6 +32,9 @@ class CategoryController extends Controller
     {
         $categoryData = new Category();
         $categoryData->fill($request->all());
+        $newThumbnailImageName = time() . '.' . $request->file('category_image')->getClientOriginalName();
+        $request->category_image->move(public_path('images/category'), $newThumbnailImageName);
+        $categoryData->category_image = $newThumbnailImageName;
         $categoryData->save();
         return view('admin.modules.category.newcategory');
     }
