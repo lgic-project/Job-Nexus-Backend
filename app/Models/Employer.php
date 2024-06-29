@@ -20,10 +20,12 @@ class Employer extends Model
         'employer_certificate',
         'employer_image',
         'employer_description',
-        'employer_certificate',
         'company_website',
         'user_id'
     ];
+
+
+
 
     public function job()
     {

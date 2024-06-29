@@ -254,4 +254,17 @@ class EmployerController extends Controller
         // Redirect to employer profile with a success message
         return redirect('/app/employer/profile')->with('success', 'Profile updated successfully!');
     }
+
+
+    public function Mobilestore(Request $request)
+    {
+        // $employerData = new Employer();
+        // $employerData->fill($request->all());
+        // $employerData->employer_image = "sfsdbf";
+        // $employerData->employer_certificate = "sfsddbf";
+
+        // return response()->json($employerData, 201);
+        // $employerData->save();
+        return response()->json($request, 201);
+    }
 }
