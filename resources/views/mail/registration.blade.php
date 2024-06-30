@@ -1,0 +1,1 @@
+<h1>Mail sent from JobNexus</h1>

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -49,11 +50,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', 'max:255'],
-            'contact' => ['required', 'integer', 'digits:10'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'name' => ['required', 'string', 'max:255'],
+            // 'role' => ['required', 'string', 'max:255'],
+            // 'contact' => ['required', 'integer', 'digits:10'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -65,15 +66,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
-        return User::create([
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     // 'role' => $data['role'],
+        //     'contact' => $data['contact'],
+        //     'role' => "sfsd",
+        //     // 'contact' => "9840454572",
+        //     'password' => Hash::make($data['password']),
+        // ]);
+
+
+        $userData = [
             'name' => $data['name'],
             'email' => $data['email'],
-            // 'role' => $data['role'],
-            'contact' => $data['contact'],
-            'role' => "sfsd",
-            // 'contact' => "9840454572",
             'password' => Hash::make($data['password']),
-        ]);
+            'role' => $data['role'],
+            'contact' => $data['contact']
+        ];
+
+        $userRegistration = User::create($userData);
+
+        Mail::send('mail/registration', $userRegistration, function ($message) use ($data) {
+            $message->from('jobnexus64@gmail.com');
+            $message->to($data['email'])
+                ->subject('Thank you for registration' . $data['name']);
+        });
     }
 }
