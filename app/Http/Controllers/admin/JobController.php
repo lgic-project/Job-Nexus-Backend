@@ -38,7 +38,6 @@ class JobController extends Controller
         $jobData->fill($req->all());
         $jobData->job_status = "Not Verified";
         $jobData->job_slug = $req->job_title;
-        $jobData->job_posted_by = 2;
         $jobData->save();
         return response()->json($jobData);
     }
@@ -129,5 +128,13 @@ class JobController extends Controller
     {
         $jobs = Job::with(['category', 'employer', 'application'])->get();
         return response()->json($jobs);
+    }
+
+    public function jobDataMobileShow($user_id)
+    {
+        $jobData = Job::where('job_posted_by', $user_id)->get();
+
+        return response()->json($jobData);
+        // return response()->json($user_id);
     }
 }

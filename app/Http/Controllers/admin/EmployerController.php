@@ -258,13 +258,20 @@ class EmployerController extends Controller
 
     public function Mobilestore(Request $request)
     {
-        // $employerData = new Employer();
-        // $employerData->fill($request->all());
+        $employerData = new Employer();
+        $employerData->fill($request->all());
         // $employerData->employer_image = "sfsdbf";
         // $employerData->employer_certificate = "sfsddbf";
 
-        // return response()->json($employerData, 201);
-        // $employerData->save();
-        return response()->json($request, 201);
+        $employerData->save();
+        return response()->json($employerData, 201);
+        // return response()->json($request, 201);
+    }
+
+    public function profileMobile($user_id)
+
+    {
+        $employerData = Employer::with('user')->where('user_id', $user_id)->firstOrFail();
+        return response()->json($employerData);
     }
 }

@@ -99,4 +99,13 @@ class ApplicationController extends Controller
             'applications' => $applications,
         ]);
     }
+
+    public function viewJobApplication($user_id)
+    {
+        $applicationData = Application::with(['job', 'applicant'])
+            ->where('employer_id', $user_id)
+            ->get();
+
+        return response()->json($applicationData);
+    }
 }

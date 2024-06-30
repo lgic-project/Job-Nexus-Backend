@@ -10,6 +10,7 @@ use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\app\JobControllerApp;
 use App\Http\Controllers\auth\UserRegController;
 use App\Http\Controllers\login\LoginController;
+use App\Models\Application;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,7 @@ Route::post('/employee/store', [EmployeeController::class, 'store']);
 Route::post('/login/user', [UserRegController::class, 'loginMobile']);
 Route::get('/checkEmployee/{user_id}', [EmployeeController::class, 'checkEmployee']);
 Route::get('/employee/{user_id}', [EmployeeController::class, 'profileMobile']);
+Route::get('/employer/mobile/{user_id}', [EmployerController::class, 'profileMobile']);
 
 
 //route for category
@@ -69,7 +71,11 @@ Route::get('/application/{user_id}', [ApplicationController::class, 'viewApplica
 
 
 Route::post('/employee/complete-profile', [EmployeeController::class, 'Mobilestore']);
-Route::post('/employeer/complete-profile', [EmployerController::class, 'Mobilestore']);
+Route::post('/employer/complete-profile', [EmployerController::class, 'Mobilestore']);
 
 
 Route::post('/login/mobile', [LoginController::class, 'login']);
+
+
+Route::get('/jobdetail/mobile/{user_id}', [JobController::class, 'jobDataMobileShow']);
+Route::get('/view/application/{user_id}', [ApplicationController::class, 'viewJobApplication']);
