@@ -29,7 +29,7 @@ class Employer extends Model
 
     public function job()
     {
-        return $this->hasMany(Job::class, 'id');
+        return $this->hasMany(Job::class, 'user_id');
     }
 
     public function user()

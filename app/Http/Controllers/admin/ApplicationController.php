@@ -203,4 +203,10 @@ class ApplicationController extends Controller
             ], 404);
         }
     }
+
+    public function allApplications($user_id)
+    {
+        $applicationData = Application::where('employer_id', $user_id)->get();
+        return response()->json($applicationData);
+    }
 }

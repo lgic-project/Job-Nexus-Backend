@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/job-api', function () {
-    $jobData = Job::all();
+    $jobData = Job::with('employer')->get(); // Eager loading employer relationship
     return response()->json($jobData);
 });
 //routes for job
@@ -81,3 +81,4 @@ Route::get('/jobdetail/mobile/{user_id}', [JobController::class, 'jobDataMobileS
 Route::get('/view/application/{user_id}', [ApplicationController::class, 'viewJobApplication']);
 Route::get('/accept/application/{user_id}', [ApplicationController::class, 'mobileApplicantAccept']);
 Route::get('/reject/application/{user_id}', [ApplicationController::class, 'mobileApplicantReject']);
+Route::get('/application/list/mobile/{user_id}', [ApplicationController::class, 'allApplications']);

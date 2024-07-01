@@ -41,6 +41,6 @@ class Job extends Model
 
     public function employer()
     {
-        return $this->belongsTo(Employer::class, 'job_posted_by');
+        return $this->belongsTo(Employer::class, 'job_posted_by', 'user_id');
     }
 }
