@@ -138,4 +138,11 @@ class JobController extends Controller
         return response()->json($jobData);
         // return response()->json($user_id);
     }
+
+
+    public function categoryJob($category)
+    {
+        $jobData = Job::where('job_category', $category)->get();
+        return response()->json($jobData);
+    }
 }

@@ -41,6 +41,7 @@ Route::get('/jobs', [JobController::class, 'filterJobs']);
 Route::post('/job/save', [JobController::class, 'saveMobile']);
 Route::post('/user/save', [UserRegController::class, 'saveMobile']);
 Route::get('/job/all', [JobController::class, 'getAllJobDetails']);
+Route::get('/job/category/mobile/{category}', [JobController::class, 'categoryJob']);
 Route::get('/job/detail/{id}', [JobControllerApp::class, 'detail']);
 
 
