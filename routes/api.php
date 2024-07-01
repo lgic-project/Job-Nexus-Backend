@@ -30,9 +30,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/job-api', function () {
-    $jobData = Job::with('employer')->get(); // Eager loading employer relationship
+    $jobData = Job::with('employer')
+        ->where('job_status', 'verified')
+        ->get(); // Eager loading employer relationship
     return response()->json($jobData);
 });
+
 //routes for job
 Route::get('/jobs', [JobController::class, 'filterJobs']);
 Route::post('/job/save', [JobController::class, 'saveMobile']);
