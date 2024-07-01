@@ -36,7 +36,7 @@ class JobController extends Controller
     {
         $jobData = new Job();
         $jobData->fill($req->all());
-        $jobData->job_status = "Not Verified";
+        $jobData->job_status = "pending";
         $jobData->job_slug = $req->job_title;
         $jobData->save();
         return response()->json($jobData);
@@ -45,8 +45,8 @@ class JobController extends Controller
     public function list()
     {
         $jobData = Job::all();
-        return view('admin.modules.jobs.listjob', compact('jobData'));
-        // return response()->json($jobData);
+        $jobData = Job::with('employer')->get();
+        return view('admin.modules.jobs.listjob', compact('jobData'));        // return response()->json($jobData);
     }
 
     public function delete($id)
@@ -54,7 +54,8 @@ class JobController extends Controller
         $jobDelete = Job::findorFail($id);
         $jobDelete->delete();
         $jobData = Job::all();
-        return view('admin.modules.job.listjob', compact('jobData'));
+        // return view('admin.modules.job.listjob', compact('jobData'));
+        return redirect("/job/list");
     }
 
     public function verify($id)

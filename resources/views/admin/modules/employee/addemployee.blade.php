@@ -9,6 +9,13 @@
     <div class="col-md-3">
         <a href="/employee"><button class="btn btn-danger"><i class="fa-solid fa-list"></i> View List</button></a>
     </div>
+    <div class="col-md-3 text-end">
+        <a href="/employee/register">
+            <button class="btn btn-success">
+                <i class="fa-solid fa-plus"></i> Create New
+            </button>
+        </a>
+    </div>
 </div>
 <form method="post" action="{{ route('employee-save') }}" enctype="multipart/form-data">
     {{ csrf_field() }}

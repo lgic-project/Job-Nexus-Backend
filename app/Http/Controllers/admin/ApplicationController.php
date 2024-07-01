@@ -8,6 +8,7 @@ use App\Models\Job;
 use App\Models\User;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ApplicationController extends Controller
 {
@@ -108,17 +109,98 @@ class ApplicationController extends Controller
 
         return response()->json($applicationData);
     }
+
+
     public function mobileApplicantReject($id)
     {
+        // Find the application by ID
         $application = Application::findOrFail($id);
+
+        // Update the applicant status to "rejected"
         $application->applicant_status = "rejected";
-        return response()->json($application);
+        $application->save();
+
+        // Fetch the user associated with the application
+        $user = User::find($application->user_id);
+
+        // Fetch the job associated with the application
+        $job = Job::find($application->job_id);
+
+        if ($user && $job) {
+            // Prepare email data
+            $emailData = [
+                'name' => $user->name,
+                'application' => $application,
+                'company' => $job->job_company_name,
+                'title' => $job->job_title,
+            ];
+
+            // Send rejection email
+            Mail::send('mail/rejection', $emailData, function ($message) use ($user, $job) {
+                $message->from('jobnexus64@gmail.com', 'Job Nexus');
+                $message->to($user->email)
+                    ->subject('Application Status Update from ' . $job->job_company_name);
+            });
+
+            // Return JSON response with user and application info
+            return response()->json([
+                'message' => 'Application rejected and email sent successfully',
+                'user' => $user,
+                'application' => $application
+            ], 200);
+        } else {
+            // Return JSON response if user or job is not found
+            return response()->json([
+                'message' => 'User or job associated with the application not found'
+            ], 404);
+        }
     }
+
+
 
     public function mobileApplicantAccept($id)
     {
+        // Find the application by ID
         $application = Application::findOrFail($id);
+
+        // Update the applicant status to "rejected"
         $application->applicant_status = "accepted";
-        return response()->json($application);
+        $application->save();
+
+        // Fetch the user associated with the application
+        $user = User::find($application->user_id);
+
+        // Fetch the job associated with the application
+        $job = Job::find($application->job_id);
+
+        if ($user && $job) {
+            // Prepare email data
+            $emailData = [
+                'name' => $user->name,
+                'application' => $application,
+                'company' => $job->job_company_name,
+                'title' => $job->job_title,
+            ];
+
+            // Send rejection email
+            Mail::send('mail/accept', $emailData, function ($message) use ($user, $job) {
+                $message->from('jobnexus64@gmail.com', 'Job Nexus');
+                $message->to($user->email)
+                    ->subject('Application Status Update from ' . $job->job_company_name);
+            });
+            // return response()->json($emailData);
+
+            // Return JSON response with user and application info
+            return response()->json([
+                'message' => 'Application accepted and email sent successfully',
+                'user' => $user,
+                'application' => $application
+            ], 200);
+        } else {
+            // Return JSON response if user or job is not found
+            return response()->json([
+                'message' => 'User or job associated with the application not found'
+            ], 404);
+        }
     }
 }

@@ -134,11 +134,4 @@ class JobControllerApp extends Controller
         $jobData = Job::findorFail($id);
         return response()->json($jobData);
     }
-
-    public function jobDataMobile($user_id)
-    {
-        // $jobData = Job::where('job_posted_by', $user_id)->get();
-        // return response()->json($jobData);
-        return response() - json($user_id);
-    }
 }

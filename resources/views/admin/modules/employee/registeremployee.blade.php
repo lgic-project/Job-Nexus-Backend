@@ -2,7 +2,22 @@
 
 @section('content')
 <div class="container">
-    <h2>Register Employee</h2>
+    <div class="row">
+
+
+        <div class="col-md-8 text-end">
+            <h2>Register Employee</h2>
+
+        </div>
+        <div class="col md-4">
+            <a href="/employee">
+                <button class="btn btn-success">
+                    <i class="fa-solid fa-list"></i> View List
+                </button>
+            </a>
+        </div>
+    </div>
+
     <form action="{{route('register-employee')}}" method="POST">
         @csrf
 

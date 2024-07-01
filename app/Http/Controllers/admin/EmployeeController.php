@@ -15,8 +15,8 @@ class EmployeeController extends Controller
     {
         $employeeData = new Employee();
         $employeeData->fill($req->all());
-        $employeeData->employee_slug = $employeeData->employee_first_name;
-        $employeeData->employee_status = "Inactive";
+        $employeeData->employee_slug = $employeeData->employee_address;
+        $employeeData->employee_status = "Verified";
         $employeeData->save();
         return response()->json($employeeData);
     }
@@ -24,7 +24,7 @@ class EmployeeController extends Controller
     public function list()
     {
         $employeeData = Employee::with('user')->get();
-        // dd($employeeData);
+        // return response()->json($employeeData);
         return view('admin.modules.employee.listemployee', compact('employeeData'));
     }
 
@@ -49,7 +49,7 @@ class EmployeeController extends Controller
         $req->employee_cv->move(public_path('images/employee/cv'), $newThumbnailImageName2);
         $employeeData->employee_cv = $newThumbnailImageName2;
         $employeeData->employee_slug = $req->employee_address;
-        $employeeData->employee_status = "Inactive";
+        $employeeData->employee_status = "Verified";
         // dd($employeeData);
         $employeeData->save();
         // $employeeData = Employee::with('user')->get();
