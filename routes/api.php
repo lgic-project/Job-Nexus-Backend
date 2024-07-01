@@ -79,3 +79,5 @@ Route::post('/login/mobile', [LoginController::class, 'login']);
 
 Route::get('/jobdetail/mobile/{user_id}', [JobController::class, 'jobDataMobileShow']);
 Route::get('/view/application/{user_id}', [ApplicationController::class, 'viewJobApplication']);
+Route::get('/accept/application/{user_id}', [ApplicationController::class, 'mobileApplicantAccept']);
+Route::get('/reject/application/{user_id}', [ApplicationController::class, 'mobileApplicantReject']);

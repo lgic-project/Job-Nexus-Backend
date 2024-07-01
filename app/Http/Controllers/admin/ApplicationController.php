@@ -108,4 +108,17 @@ class ApplicationController extends Controller
 
         return response()->json($applicationData);
     }
+    public function mobileApplicantReject($id)
+    {
+        $application = Application::findOrFail($id);
+        $application->applicant_status = "rejected";
+        return response()->json($application);
+    }
+
+    public function mobileApplicantAccept($id)
+    {
+        $application = Application::findOrFail($id);
+        $application->applicant_status = "accepted";
+        return response()->json($application);
+    }
 }
