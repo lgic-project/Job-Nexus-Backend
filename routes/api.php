@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\EmployerController;
+use App\Http\Controllers\admin\NotificationController;
 use App\Http\Controllers\admin\WishlistController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\app\JobControllerApp;
@@ -86,3 +87,8 @@ Route::get('/view/application/{user_id}', [ApplicationController::class, 'viewJo
 Route::get('/accept/application/{user_id}', [ApplicationController::class, 'mobileApplicantAccept']);
 Route::get('/reject/application/{user_id}', [ApplicationController::class, 'mobileApplicantReject']);
 Route::get('/application/list/mobile/{user_id}', [ApplicationController::class, 'allApplications']);
+
+
+//route  for notification
+
+Route::get('/notifications/show', [NotificationController::class, 'viewNotifications']);
